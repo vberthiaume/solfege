@@ -52,8 +52,8 @@ public class ear {
 		 mesure[i]= new Vector();
 		 mesure[i] = gauche.genereAccord(mode, Integer.parseInt(tab.elementAt(i).toString()));
 		 for(int j = 0 ; j < mesure[i].size() ; j++){
-			 System.out.println("Reponse :"+(int)mesure[i].get(j) );
-		 mesure[i].setElementAt(midiToNote((int)mesure[i].get(j)), j);
+			 System.out.println("Reponse :"+(Integer)mesure[i].get(j) );
+		 mesure[i].setElementAt(midiToNote((Integer)mesure[i].get(j)), j);
 		 }
 			 
 		}//for i
