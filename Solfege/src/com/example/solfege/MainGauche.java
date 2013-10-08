@@ -1,3 +1,5 @@
+package com.example.solfege;
+
 import java.util.Random;
 import java.util.Vector;
 

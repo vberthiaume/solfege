@@ -1,3 +1,4 @@
+package com.example.solfege;
 
 import java.awt.*;
 import java.util.Vector;
