@@ -8,6 +8,8 @@
 bin
 .metadata
 bin/
+Solfege/bin/
+Solfege/.classpath
 tmp/
 *.tmp
 *.bak
