@@ -15,24 +15,11 @@
         android:onClick="onClick"
         android:text="@string/button_send" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/Staff_desc"
-        android:scaleType="fitXY"
-        android:src="@drawable/staff" />
-
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Button1"
-        android:layout_below="@+id/imageView1"
         android:layout_marginTop="43dp"
         android:ems="10"
         android:text="1 2 3 maj" />

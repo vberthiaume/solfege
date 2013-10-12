@@ -13,8 +13,6 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
 	
-	private static factorysample affichage;
-	private static JFrame win = new JFrame("GuidoEngine Java Factory");	 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +46,7 @@ public class MainActivity extends Activity {
     	
     	Vector<String> accord = mainGauche.genereAccord("maj", 1);
     	editText1.setText(accord.toString());
-    	Vector[] container = new Vector[1];
-    	container[1].add(accord);
     	
-		affichage = new factorysample(container, 1);
-		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		win.setBounds(10, 30, 500, 400);
-	    win.add( affichage );
-	    win.setVisible(true);
-    	//editText2.setText(editText1.getText());
     	
     	
         
