@@ -1,13 +1,11 @@
 package com.example.solfege;
 
 import java.util.Vector;
-
-import javax.swing.JFrame;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.EditText;
 
 
@@ -18,6 +16,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        
+        WebView lWebView = (WebView)findViewById(R.id.webView1);
+        lWebView.getSettings().setJavaScriptEnabled(true);
+        
+        lWebView.loadUrl("file:///android_asset/seb.html");
+
     }
 
 

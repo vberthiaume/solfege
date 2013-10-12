@@ -22,7 +22,23 @@
         android:layout_alignLeft="@+id/Button1"
         android:layout_marginTop="43dp"
         android:ems="10"
-        android:text="1 2 3 maj" />
+        android:inputType="number"
+        android:text="@string/remplirBouton1" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText2" >
+
+        <WebView
+            android:id="@+id/webView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 
     <EditText
         android:id="@+id/editText2"
@@ -30,7 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText1"
         android:layout_below="@+id/editText1"
-        android:layout_marginTop="55dp"
-        android:ems="10" />
+        android:inputType="number"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
