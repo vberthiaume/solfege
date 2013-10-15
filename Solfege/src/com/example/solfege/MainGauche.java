@@ -1,8 +1,9 @@
 package com.example.solfege;
 
+import java.lang.reflect.Array;
 import java.util.Random;
 import java.util.Vector;
-
+import android.webkit.JavascriptInterface;
 
 public class MainGauche {
 
@@ -16,6 +17,7 @@ public class MainGauche {
 	private int dureeout;
 	private String mode;
 	private int random;
+	
 	
 	public MainGauche() {
 		// TODO Auto-generated constructor stub
@@ -39,16 +41,21 @@ public class MainGauche {
 		
 	}
 	
+	@android.webkit.JavascriptInterface
+	public int test(){
+	    
+	    return 123;
+	}
 	/**
 	 * @param args
 	 */
-	public Vector genereAccord( String modein, int degrein) {
-		
+	@android.webkit.JavascriptInterface
+	public String genereAccord( String modein, int degrein) {
+	    
 		set_mode(modein);
-		
 		Vector reponse = gauche(degrein);
-		
-		return reponse;
+		String retour=reponse.toString();
+		return retour;
 	}
 
 	public Vector gauche(int n){
