@@ -61,6 +61,28 @@
     <body>
       <script type="text/javascript">
         function show() {
+        
+        //en fait j'en suis là.....l'appel de la ligne suivante va appeler la fonction java genereAccord de l'objet maingauche
+        //qui est une instanciation de la classe MainGauche(il fallait le créer dans le MainActivity...)
+        //Ce qu'il faudrait c'est que au lieu d'afficher le résultat dans le bouton, elle passe ce résultat au script qui 
+        //est plus loin (var notes = [blabla....]) pour qu'il prenne ce résultat comme notes ! (et au passage il ne prends que
+        //des trucs du style c e g....donc il faut convertir notre midi en c e g etc 
+        // en fait je l'avais déjà fait dans le projet précédant : 
+        //
+        //private static final String[] notes= { "c", "c#", "d", "d#","e","f","f#","g","g#","a", "a#", "b","b#" }; // find the octave number
+        //static int midiToOctave(int midi) { return midi/12-1; } // find the note name 
+        //static String  midiToNote(int midi) { return notes[midi%12]; } // find the midi number 
+    
+        //int noteToMidi(String note, int octave) {    
+        //int i;    
+        //for (i= 0; i < notes.length; i++)       
+        //    if (note.equals(notes[i]))          
+        //        return 12*(octave+1)+i;    
+        //return -1; }
+        
+        //             VOILA C EST INTENSE MAIS C EST CA QU EST CA !
+        
+        
            document.forms["general"].elements["champ1"].value=("MainGauche.genereAccord :"+ maingauche.genereAccord("maj",1));
         }
        </script>
