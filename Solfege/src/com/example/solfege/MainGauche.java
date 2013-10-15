@@ -58,7 +58,7 @@ public class MainGauche {
 	}
 	
 	/**
-	 * Generates a string of ??? which looks like ??? based on parameters
+	 * Generates a string of 3 notes representing a chord in abc notation, e.g., "a b c"
 	 * @param modein either "maj" or "min"--> should be bool then?
 	 * @param degrein degree of the chord, valid values are [???,???]
 	 * @return the 3 notes of a chord in abc notation (http://en.wikipedia.org/wiki/ABC_notation)
