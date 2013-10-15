@@ -58,49 +58,30 @@
   </script>
 </head>
 
-    <body>
-      <script type="text/javascript">
+<body>
+	<script type="text/javascript">
         function show() {
         
-        //en fait j'en suis là.....l'appel de la ligne suivante va appeler la fonction java genereAccord de l'objet maingauche
-        //qui est une instanciation de la classe MainGauche(il fallait le créer dans le MainActivity...)
-        //Ce qu'il faudrait c'est que au lieu d'afficher le résultat dans le bouton, elle passe ce résultat au script qui 
-        //est plus loin (var notes = [blabla....]) pour qu'il prenne ce résultat comme notes ! (et au passage il ne prends que
-        //des trucs du style c e g....donc il faut convertir notre midi en c e g etc 
-        // en fait je l'avais déjà fait dans le projet précédant : 
-        //
-        //private static final String[] notes= { "c", "c#", "d", "d#","e","f","f#","g","g#","a", "a#", "b","b#" }; // find the octave number
-        //static int midiToOctave(int midi) { return midi/12-1; } // find the note name 
-        //static String  midiToNote(int midi) { return notes[midi%12]; } // find the midi number 
-    
-        //int noteToMidi(String note, int octave) {    
-        //int i;    
-        //for (i= 0; i < notes.length; i++)       
-        //    if (note.equals(notes[i]))          
-        //        return 12*(octave+1)+i;    
-        //return -1; }
-        
-        //             VOILA C EST INTENSE MAIS C EST CA QU EST CA !
-        
-        
-           document.forms["general"].elements["champ1"].value=("MainGauche.genereAccord :"+ maingauche.genereAccord("maj",1));
+	        //document.forms["general"].elements["champ1"].value=("MainGauche.genereAccord :"+ maingauche.genereAccord("maj",1));
+	        window.accord = ("MainGauche.genereAccordAbc :"+ maingauche.genereAccordAbc("maj",1));
         }
        </script>
-        <FORM name="general">
-        <input type="button" name="champ1" value="Va chercher du java !" onClick= "show()"/>
-              <div class="content">
-              
-            			<div class="description two">
-                			  <div class="example a" example="a">
-                				<canvas width=525 height=120></canvas>
-                				<script>
+	<FORM name="general">
+		<input type="button" name="champ1" value="Va chercher du java !"
+			onClick="show()" />
+		<div class="content">
+			<div class="description two">
+				<div class="example a" example="a">
+					<canvas width=525 height=120></canvas>
+					<script>
                 		  var canvas = $("div.two div.a canvas")[0];
-                		  var renderer = new Vex.Flow.Renderer(canvas,
-                			Vex.Flow.Renderer.Backends.CANVAS);
+                		  var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
                 
                 		  var ctx = renderer.getContext();
                 		  var stave = new Vex.Flow.Stave(10, 0, 500);
                 		  stave.addClef("treble").setContext(ctx).draw();
+                		  
+                		  //NOW HERE, NEED TO CONVERT window.accord, WHICH LOOKS LIKE "a b c", INTO SOMETHING VEXFLOW UNDERSTANDS
                 
                 		  // Create the notes
                 		  var notes = [
@@ -110,8 +91,7 @@
                 			// A quarter-note D.
                 			new Vex.Flow.StaveNote({ keys: ["d/4"], duration: "q" }),
                 
-                			// A quarter-note rest. Note that the key (b/4) specifies the vertical
-                			// position of the rest.
+                			// A quarter-note rest. Note that the key (b/4) specifies the vertical position of the rest.
                 			new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "qr" }),
                 
                 			// A C-Major chord.
@@ -134,16 +114,15 @@
                 
                 		  // Render voice
                 		  voice.draw(ctx, stave);
-                				</script>
-                			  </div> 
-            		   </div>
-            
-              </div>
-          </FORM>
-      
-    
-    
-      
-    </body>
+                	</script>
+				</div>
+			</div>
+		</div>
+	</FORM>
+
+
+
+
+</body>
 
 </html>
