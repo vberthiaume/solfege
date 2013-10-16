@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         lWebView.addJavascriptInterface(new MainGauche(), "maingauche");
 
         
-        lWebView.loadUrl("file:///android_asset/seb.html");
+        lWebView.loadUrl("file:///android_asset/webLayout.html");
         
         Button button = (Button) findViewById(R.id.new_button);
         button.setOnClickListener(new View.OnClickListener() {
