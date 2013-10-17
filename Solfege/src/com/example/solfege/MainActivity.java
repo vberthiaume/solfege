@@ -24,17 +24,7 @@ public class MainActivity extends Activity {
         //Injection du code de MainGauche dans le Javascript de la webView...
         lWebView.addJavascriptInterface(new MainGauche(), "maingauche");
 
-        
-        lWebView.loadUrl("file:///android_asset/webLayout.html");
-        
-        Button button = (Button) findViewById(R.id.new_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                WebView lWebView = (WebView)findViewById(R.id.webView1);
-                lWebView.loadUrl( "javascript:window.location.reload( true )" );             
-            }
-        });
-        
+        lWebView.loadUrl("file:///android_asset/VexTab.htm");
 
     }
 
@@ -53,6 +43,5 @@ public class MainActivity extends Activity {
         //Vector<String> accord = mainGauche.genereAccord("maj", 1);
     }
     
-
     
 }
