@@ -20,20 +20,16 @@
 
 <div class="vex-tabdiv" width="680" scale="1.0" editor="true" editor_width="680" editor_height="330" style="position: relative;">
 
-<canvas class="vex-canvas" width="680" height="170"></canvas>
+    <canvas class="vex-canvas" width="680" height="170"></canvas>
+    <textarea class="editor" name="textfield" style="width: 688px; height: 332px;"></textarea>     
+    <div class="editor-error"></div>
 
-<textarea class="editor" name="textfield" style="width: 688px; height: 332px;">
-</textarea>
-
+</div>
 <button style="width: 202px;" onclick="ClicBouton();"></button>
 <script type="text/javascript"> 
 function ClicBouton(){ 
       document.getElementById('textfield').value = 'tabstave';
    } 
 </script>
-        
-<div class="editor-error"></div>
-
-</div>
 </body>
 </html>
