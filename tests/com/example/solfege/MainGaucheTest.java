@@ -8,22 +8,22 @@ public class MainGaucheTest {
 
     @Test
     public void testMainGauche() {
-        fail("Not yet implemented"); // TODO
+        fail("Not yet implemented"); 
     }
 
     @Test
     public void testMain() {
-        fail("Not yet implemented"); // TODO
+        fail("Not yet implemented"); 
     }
 
     @Test
     public void testTest() {
-        fail("Not yet implemented"); // TODO
+        fail("Not yet implemented"); 
     }
 
     @Test
     public void testGenereAccordMidi() {
-        fail("Not yet implemented"); // TODO
+        fail("Not yet implemented"); 
     }
 
     @Test
@@ -35,17 +35,17 @@ public class MainGaucheTest {
 
     @Test
     public void testGauche() {
-        fail("Not yet implemented"); // TODO
+        fail("Not yet implemented"); 
     }
 
     @Test
     public void testSetaccord() {
-        fail("Not yet implemented"); // TODO
+        fail("Not yet implemented"); 
     }
 
     @Test
     public void testDegre2midi() {
-        fail("Not yet implemented"); // TODO
+        fail("Not yet implemented"); 
     }
 
 }

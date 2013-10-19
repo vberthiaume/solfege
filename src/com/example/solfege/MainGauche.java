@@ -1,6 +1,6 @@
 package com.example.solfege;
 
-import java.lang.reflect.Array;
+
 import java.util.Random;
 import java.util.Vector;
 import android.webkit.JavascriptInterface;
@@ -19,7 +19,6 @@ public class MainGauche {
 	private int random;
 
 	public MainGauche() {
-		// TODO Auto-generated constructor stub
 		renversement = 0;
 		hauteur = 48;
 		degre = 1;
@@ -36,19 +35,13 @@ public class MainGauche {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
-	@android.webkit.JavascriptInterface
-	public int test() {
-		return 123;
-	}
 
 	/**
 	 * @param args
 	 */
-	@android.webkit.JavascriptInterface
 	public String genereAccordMidi(String modein, int degrein) {
 
 		set_mode(modein);
@@ -58,11 +51,12 @@ public class MainGauche {
 	}
 	
 	/**
-	 * Generates a string of 3 notes representing a chord in abc notation, e.g., "a b c"
+	 * Generates a string of 3 notes representing a chord in abc notation and wrap it for the vextab notation.
 	 * @param modein either "maj" or "min"--> should be bool then?
 	 * @param degrein degree of the chord, valid values are [???,???]
 	 * @return the 3 notes of a chord in abc notation (http://en.wikipedia.org/wiki/ABC_notation)
 	 */
+	@android.webkit.JavascriptInterface
 	public String genereAccordAbc(String modein, int degrein) {
 
 		set_mode(modein);
@@ -72,18 +66,20 @@ public class MainGauche {
 		//get numbers from string in ints
 		String[] strChordMidiNotes =  strChord.substring(1, strChord.length()-1).split(",");
 		
-		String strAbcChord = "";
+		String strAbcChord = "(";
 		//use midiToAbc() to get the corresponding letters
 		for (int iCurNote = 0; iCurNote < strChordMidiNotes.length; ++iCurNote){
 			try {
-				strAbcChord += midiToAbc(Integer.parseInt(strChordMidiNotes[iCurNote].trim())) + " ";
+				strAbcChord += midiToAbc(Integer.parseInt(strChordMidiNotes[iCurNote].trim())) + "/4.";
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		strAbcChord = strAbcChord.substring(0, strAbcChord.length()-1);
+		strAbcChord +=")";
+		
 		//put them in a string like "a b c"
-		return strAbcChord.trim();
+		return strAbcChord.trim();            //TODO faire une fonction qui prépare le contexte (barres de mesures+clef+tab=false...etc)
 		
 	}
 
