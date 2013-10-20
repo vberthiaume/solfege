@@ -10,11 +10,8 @@ public class MainGauche {
 	private int renversement;
 	private int hauteur;
 	private int degre;
-	private int veloout;
 	private String accord_name;
 	private int[] accord;
-	private int tempo;
-	private int dureeout;
 	private String mode;
 	private int random;
 
@@ -22,22 +19,11 @@ public class MainGauche {
 		renversement = 0;
 		hauteur = 48;
 		degre = 1;
-		veloout = 60;
-		tempo = 100;
-		dureeout = 50;
 		random = 0;
 		mode = new String("maj");
 		accord_name = new String("maj");
 		accord = new int[3];
 	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-
-	}
-
 
 	/**
 	 * @param args

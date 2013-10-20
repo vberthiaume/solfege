@@ -12,7 +12,6 @@ import android.webkit.JavascriptInterface;
 
 public class MainActivity extends Activity {
 	
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +22,11 @@ public class MainActivity extends Activity {
         
         //Injection du code de MainGauche dans le Javascript de la webView...
         lWebView.addJavascriptInterface(new MainGauche(), "maingauche");
-
+        
+        //ajout de la page contentant VEXTAB
         lWebView.loadUrl("file:///android_asset/VexTab.htm");
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
