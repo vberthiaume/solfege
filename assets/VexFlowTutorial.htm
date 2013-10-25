@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://vexflow.com/docs/tutorial.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>The VexFlow Tutorial</title>
+  <link href="./VexFlowTutorial_files/css" rel="stylesheet" type="text/css">
+  <link href="./VexFlowTutorial_files/style.css" media="screen" rel="Stylesheet" type="text/css">
+
+  <!-- VexFlow Compiled Source -->
+  <script src="./VexFlowTutorial_files/vexflow-min.js"></script><style type="text/css"></style>
+
+  <!-- Support Sources -->
+  <script src="./VexFlowTutorial_files/jquery.js"></script>
+  <script src="./VexFlowTutorial_files/raphael.js"></script>
+
+  <style type="text/css">
+    canvas {
+      background: #eed;
+      padding: 10px;
+      border: 10px solid #ddc;
+    }
+
+    div.egcode {
+      font-family: Courier;
+      font-size: 14px;
+    }
+  </style>
+
+  <script>
+    /* Take raw javascript code, and return moderately useful HTML */
+    function prettify_code(code) {
+      var lines = code.split(/\r\n|\n|\r/);
+      var new_lines = [];
+      for (var j = 0; j < lines.length; ++j) {
+        code = lines[j];
+        code = code.replace(/\s/g, "&nbsp;");
+        code = code.replace(/>/g, "&gt;");
+        code = code.replace(/</g, "&lt;");
+        new_lines.push(code);
+      }
+
+      pretty_code = "<div class='egcode'>" + new_lines.join("<br/>") + "</div>";
+      return pretty_code;
+    }
+
+    /*
+       Find all the javascript examples and copy their source code
+       into the associated <code> blocks.
+    */
+    $(function() {
+      $("div.description").each(function(index, sel) {
+        codes = $(sel).find("code.example");
+        codes.each(function(i, s) {
+          var example = $(s).attr("example");
+          var code = $($(sel).find(
+            "div.example." + example + " script")[0]).html();
+          $(s).html(prettify_code(code));
+         })
+      })
+    })
+  </script>
+	<script type="text/javascript"> 
+		function buttonClicked(){ 
+			
+			//this works				
+			document.getElementById('myButton').value = javascriptVariable;
+			stave.addClef("bass").setContext(ctx).draw();
+		}
+	</script>
+</head>
+<body>
+  <div class="content">
+    <div class="description two">
+      <div class="example a" example="a">
+        <canvas width="525" height="120"></canvas>
+        <p>
+        <script>
+			var canvas = $("div.two div.a canvas")[0];
+			var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
+			
+			var ctx = renderer.getContext();
+			var stave = new Vex.Flow.Stave(10, 0, 500);
+			stave.addClef("treble").setContext(ctx).draw();
+			
+			// Create the notes
+			var notes = [
+			  // A quarter-note C.
+			  new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "q" }),
+			
+			  // A quarter-note D.
+			  new Vex.Flow.StaveNote({ keys: ["d/4"], duration: "q" }),
+			
+			  // A quarter-note rest. Note that the key (b/4) specifies the vertical
+			  // position of the rest.
+			  new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "qr" }),
+			
+			  // A C-Major chord.
+			  new Vex.Flow.StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "q" })
+			];
+			
+			// Create a voice in 4/4
+			var voice = new Vex.Flow.Voice({
+			  num_beats: 4,
+			  beat_value: 4,
+			  resolution: Vex.Flow.RESOLUTION
+			});
+			
+			// Add notes to voice
+			voice.addTickables(notes);
+			
+			// Format and justify the notes to 500 pixels
+			var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 500);
+			
+			// Render voice
+			voice.draw(ctx, stave);
+        </script>
+      </p></div>
+    </div>
+  </div>
+  <input type="button" id ="myButton" onclick="buttonClicked()" value="add notation">
+  <script>var javascriptVariable = "tabstave";</script>
+</body></html>

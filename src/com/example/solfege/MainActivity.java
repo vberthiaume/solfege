@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         
         //ajout de la page contentant VEXTAB
         //lWebView.loadUrl("file:///android_asset/VexTab.htm");
-        lWebView.loadUrl("file:///android_asset/VexFlow.htm");
+        lWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
         
         lWebView.loadUrl("javascript:myFunction()");
 
