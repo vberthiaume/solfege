@@ -57,29 +57,17 @@
          })
       })
     })
-  </script>
-	<script type="text/javascript"> 
-		function buttonClicked(){ 
+ 
+	function buttonClicked(){ 
 			
-			//this works				
-			document.getElementById('myButton').value = javascriptVariable;
-			stave.addClef("bass").setContext(ctx).draw();
-		}
-	</script>
-</head>
-<body>
-  <div class="content">
-    <div class="description two">
-      <div class="example a" example="a">
-        <canvas width="525" height="120"></canvas>
-        <p>
-        <script>
-			var canvas = $("div.two div.a canvas")[0];
-			var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
+		document.getElementById('myButton').value = javascriptVariable;
+		
+		//THIS WORKS SO i CAN ACCESS THE STAVE OBJECT FROM OUTSIDE
+					var c = "f/4";
 			
-			var ctx = renderer.getContext();
-			var stave = new Vex.Flow.Stave(10, 0, 500);
-			stave.addClef("treble").setContext(ctx).draw();
+			//THS DOESN'T WORK SO I CAN'T ACCESS OUTSIDE VARIABLES HERE
+			//c = javascriptVariable.value;
+			
 			
 			// Create the notes
 			var notes = [
@@ -87,7 +75,7 @@
 			  new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "q" }),
 			
 			  // A quarter-note D.
-			  new Vex.Flow.StaveNote({ keys: ["d/4"], duration: "q" }),
+			  new Vex.Flow.StaveNote({ keys: [c], duration: "q" }),
 			
 			  // A quarter-note rest. Note that the key (b/4) specifies the vertical
 			  // position of the rest.
@@ -112,10 +100,28 @@
 			
 			// Render voice
 			voice.draw(ctx, stave);
+		
+	}
+	</script>
+</head>
+<body>
+  <div class="content">
+    <div class="description two">
+      <div class="example a" example="a">
+        <canvas width="525" height="120"></canvas>
+        <p>
+        <script>
+			var canvas = $("div.two div.a canvas")[0];
+			var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
+			
+			var ctx = renderer.getContext();
+			var stave = new Vex.Flow.Stave(10, 0, 500);
+			stave.addClef("treble").setContext(ctx).draw();
+
         </script>
       </p></div>
     </div>
   </div>
   <input type="button" id ="myButton" onclick="buttonClicked()" value="add notation">
-  <script>var javascriptVariable = "tabstave";</script>
+  <script "text/javascript">var javascriptVariable = "f/4";</script>
 </body></html>
