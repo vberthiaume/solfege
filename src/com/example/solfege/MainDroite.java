@@ -1,19 +1,23 @@
 package com.example.solfege;
 
-public class MainDroite extends Piece{
+public class MainDroite{
 
     private int     veloout;
     private int     hauteur;
     private int     degre;
     private int[][] gammes;
+    private int     tempo;
+    private String  mode;
     //TODO faire en sorte que ce tableau soit setté par sept curseurs sur l'interface (valeurs entre 0 et 10)
     private int[]   probas_Notes =   { 7,  3,  4,  5,  7,  4,  3 };
     
     public MainDroite() {
 
-        this.veloout        =   60;
-        this.hauteur        =   48;
-        this.gammes         =   init_gammes();
+        
+        veloout        =   60;
+        hauteur        =   48;
+        gammes         =   init_gammes();
+
     }
 
     /**
@@ -27,12 +31,12 @@ public class MainDroite extends Piece{
         
         temp    = "";
         temp2   = "";
-        temp2   = String.format( " ( ( ( 4 4 ) ( %d ) ) ", super.tempo);
+        temp2   = String.format( " ( ( ( 4 4 ) ( %d ) ) ", tempo);
         temp    = temp2;
         this.degre  =   degre;
 
         /******************************************************************/
-        if(super.mode.equals("maj")){
+        if(mode.equals("maj")){
             temp = rythmes(5,temp,0);
         
         }//if maj
@@ -157,7 +161,7 @@ public class MainDroite extends Piece{
      */
     int degre2midi(int degre){
 
-        if(super.mode.equals("maj")){ 
+        if(mode.equals("maj")){ 
             switch(degre){
             case 0:
                 return 0;
@@ -293,6 +297,14 @@ public class MainDroite extends Piece{
         this.hauteur = hauteur;
     }
 
+    protected void setTempo(int val){
+        
+        this.tempo = val;
+    }
+    protected void setMode(String val){
+        this.mode = val;
+    }
+    
 }//class mainDroite
 
 
