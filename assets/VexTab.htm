@@ -1,35 +1,55 @@
-
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>VexTab</title>
-  <link href="./VexTab_files/css" rel="stylesheet" type="text/css">
-  <link href="./VexTab_files/tabdiv.css" media="screen" rel="Stylesheet" type="text/css"> 
-  <link href="./VexTab_files/style.css" media="screen" rel="Stylesheet" type="text/css"> 
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		
+		<link href="./VexTab_files/css" rel="stylesheet" type="text/css">
+		<link href="./VexTab_files/tabdiv.css" media="screen" rel="Stylesheet" type="text/css"> 
+		<link href="./VexTab_files/style.css" media="screen" rel="Stylesheet" type="text/css"> 
+		
+		<!-- Support Sources -->
+		<script src="./VexTab_files/vexflow-min.js"></script>
+		<style type="text/css"></style>
+		<script src="./VexTab_files/underscore-min.js"></script>
+		<script src="./VexTab_files/jquery.js"></script>
+		<script src="./VexTab_files/tabdiv-min.js"></script>
+		<script type="text/javascript"> 
+			function myFunction(){ 
+				
+				//this line works if I remove the div class below (ie only need to remove 'class="vex-tabdiv"'), so the problem is getting into that div class
+				//document.getElementById('vexEditor').value = 'tabstave notation=true';
+				
+				//this doesn't work
+				//document.getElementById('tabDivId').getElementById('vexEditor').value = 'tabstave notation=true';
+				
+				vextab.parse(javascriptVariable);				
+				document.getElementById('myButton').value = javascriptVariable;
+				
+				
+				
+			}
+			
+		</script>
+		
+	</head>
+	
+	<body>
+	
+	<!--  the complication here is that we can't access stuff in this div class using getElementById-->
+		<div class="vex-tabdiv" id="tabDivId" width="280" scale="1.0" editor="false" editor_width="280" editor_height="330" style="position: relative;">
+		
+		    <canvas class="vex-canvas" width="280" height="170" style="width: 274px; "></canvas>
+		    
+		    <!-- 
+		    <textarea class="editor" id ="vexEditor" name="textfield" style="width: 190px; height: 132px;">
+		    tabstave
+		    </textarea>
+		     -->
+			
+		</div>
+		
+		<input type="button" id ="myButton" onclick="myFunction()" value="add notation">
+		<script>var javascriptVariable = "tabstave";</script>
+		 
 
-  <!-- Support Sources -->
-  <script src="./VexTab_files/vexflow-min.js"></script>
-  <style type="text/css"></style>
-  <script src="./VexTab_files/underscore-min.js"></script>
-  <script src="./VexTab_files/jquery.js"></script>
-  <script src="./VexTab_files/tabdiv-min.js"></script>
-
-</head>
-
-<body>
-
-<div class="vex-tabdiv" width="680" scale="1.0" editor="true" editor_width="680" editor_height="330" style="position: relative;">
-
-    <canvas class="vex-canvas" width="680" height="170"></canvas>
-    <textarea class="editor" name="textfield" style="width: 688px; height: 332px;"></textarea>     
-    <div class="editor-error"></div>
-
-</div>
-<button style="width: 202px;" onclick="ClicBouton();"></button>
-<script type="text/javascript"> 
-function ClicBouton(){ 
-      document.getElementById('textfield').value = 'tabstave';
-   } 
-</script>
-</body>
+	</body>
 </html>

@@ -24,8 +24,12 @@ public class MainActivity extends Activity {
         lWebView.addJavascriptInterface(new MainGauche(), "maingauche");
         
         //ajout de la page contentant VEXTAB
-        lWebView.loadUrl("file:///android_asset/VexTab.htm");
+        //lWebView.loadUrl("file:///android_asset/VexTab.htm");
+        lWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
+        
+        lWebView.loadUrl("javascript:myFunction()");
 
+        
     }
 
     @Override
