@@ -2,9 +2,7 @@
 <!-- saved from url=(0037)http://vexflow.com/docs/tutorial.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <title>The VexFlow Tutorial</title>
-  <link href="./VexFlowTutorial_files/css" rel="stylesheet" type="text/css">
-  <link href="./VexFlowTutorial_files/style.css" media="screen" rel="Stylesheet" type="text/css">
-
+  
   <!-- VexFlow Compiled Source -->
   <script src="./VexFlowTutorial_files/vexflow-min.js"></script><style type="text/css"></style>
 
@@ -59,47 +57,34 @@
     })
  
 	function buttonClicked(){ 
-			
+		
+		//change the name of the button just to show that we can use an external variable
 		document.getElementById('myButton').value = javascriptVariable;
 		
-		//THIS WORKS SO i CAN ACCESS THE STAVE OBJECT FROM OUTSIDE
-					var c = "f/4";
-			
-			//THS DOESN'T WORK SO I CAN'T ACCESS OUTSIDE VARIABLES HERE
-			//c = javascriptVariable.value;
-			
-			
-			// Create the notes
-			var notes = [
-			  // A quarter-note C.
-			  new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "q" }),
-			
-			  // A quarter-note D.
-			  new Vex.Flow.StaveNote({ keys: [c], duration: "q" }),
-			
-			  // A quarter-note rest. Note that the key (b/4) specifies the vertical
-			  // position of the rest.
-			  new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "qr" }),
-			
-			  // A C-Major chord.
-			  new Vex.Flow.StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "q" })
-			];
-			
-			// Create a voice in 4/4
-			var voice = new Vex.Flow.Voice({
-			  num_beats: 4,
-			  beat_value: 4,
-			  resolution: Vex.Flow.RESOLUTION
-			});
-			
-			// Add notes to voice
-			voice.addTickables(notes);
-			
-			// Format and justify the notes to 500 pixels
-			var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 500);
-			
-			// Render voice
-			voice.draw(ctx, stave);
+		//TODO NOT WORKING
+		//document.getElementById('myButton').value = maingauche.genereAccordAbc();
+		
+		
+		// Create the notes
+		var notes = [
+		  new Vex.Flow.StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "w" })
+		];
+		
+		// Create a voice in 4/4
+		var voice = new Vex.Flow.Voice({
+		  num_beats: 4,
+		  beat_value: 4,
+		  resolution: Vex.Flow.RESOLUTION
+		});
+		
+		// Add notes to voice
+		voice.addTickables(notes);
+		
+		// Format and justify the notes to 200 pixels
+		var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 200);
+		
+		// Render voice
+		voice.draw(ctx, stave);
 		
 	}
 	</script>
@@ -108,20 +93,20 @@
   <div class="content">
     <div class="description two">
       <div class="example a" example="a">
-        <canvas width="525" height="120"></canvas>
+        <canvas width="200" height="120"></canvas>
         <p>
         <script>
 			var canvas = $("div.two div.a canvas")[0];
 			var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
 			
 			var ctx = renderer.getContext();
-			var stave = new Vex.Flow.Stave(10, 0, 500);
+			var stave = new Vex.Flow.Stave(10, 0, 200);
 			stave.addClef("treble").setContext(ctx).draw();
 
         </script>
+        <input type="button" id ="myButton" onclick="buttonClicked()" value="add notation">
+  		<script "text/javascript">var javascriptVariable = "javascriptVariableContent";</script>
       </p></div>
     </div>
   </div>
-  <input type="button" id ="myButton" onclick="buttonClicked()" value="add notation">
-  <script "text/javascript">var javascriptVariable = "f/4";</script>
 </body></html>

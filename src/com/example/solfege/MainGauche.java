@@ -42,7 +42,8 @@ public class MainGauche {
 	 * @param degrein degree of the chord, valid values are [???,???]
 	 * @return the 3 notes of a chord in abc notation (http://en.wikipedia.org/wiki/ABC_notation)
 	 */
-	@android.webkit.JavascriptInterface
+	//@android.webkit.JavascriptInterface
+	@JavascriptInterface
 	public String genereAccordAbc(String modein, int degrein) {
 
 		set_mode(modein);
@@ -68,7 +69,8 @@ public class MainGauche {
 		return strAbcChord.trim();            //TODO faire une fonction qui prépare le contexte (barres de mesures+clef+tab=false...etc)
 		
 	}
-
+	
+	@JavascriptInterface
 	public Vector gauche(int n) {
 
 		Vector temp = new Vector();
@@ -152,8 +154,9 @@ public class MainGauche {
 
 	}
 	
-    private static final String[] notes= { "c", "c#", "d", "d#","e","f","f#","g","g#","a", "a#", "b","b#" }; // find the octave number
+	private static final String[] notes= { "c", "c#", "d", "d#","e","f","f#","g","g#","a", "a#", "b","b#" }; // find the octave number
 	
+    @JavascriptInterface
 	private int abcToMidi(String note, int octave) {
 		int i;
 		for (i = 0; i < notes.length; i++){
@@ -168,6 +171,7 @@ public class MainGauche {
 		return notes[p_iMidiNote % 12];
 	}
 	
+	@JavascriptInterface
 	public void setaccord() {
 
 		Random rnd = new Random(3);
@@ -256,6 +260,7 @@ public class MainGauche {
 
 	}
 
+	@JavascriptInterface
 	int degre2midi(int degre) {
 
 		if (mode.equals("maj")) {
@@ -298,6 +303,7 @@ public class MainGauche {
 		return 0;
 	}
 
+	@JavascriptInterface
 	private void set_mode(String modein) {
 
 		mode = modein;

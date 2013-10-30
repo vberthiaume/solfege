@@ -20,15 +20,14 @@ public class MainActivity extends Activity {
         WebView lWebView = (WebView)findViewById(R.id.webView1);
         lWebView.getSettings().setJavaScriptEnabled(true);
         
-        //Injection du code de MainGauche dans le Javascript de la webView...
+        //NOT WORKING Injection du code de MainGauche dans le Javascript de la webView...
         lWebView.addJavascriptInterface(new MainGauche(), "maingauche");
         
-        //ajout de la page contentant VEXTAB
+        //load the 
         //lWebView.loadUrl("file:///android_asset/VexTab.htm");
         lWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
         
-        lWebView.loadUrl("javascript:myFunction()");
-
+        
         
     }
 
@@ -39,11 +38,11 @@ public class MainActivity extends Activity {
         return true;
     }
     
-    /** Called when the user clicks the Send button */
-    public void onClick(View view) {
     
-        //MainGauche mainGauche = new MainGauche();
-        //Vector<String> accord = mainGauche.genereAccord("maj", 1);
+    public void androidButtonClick(View view) {
+    
+        MainGauche mainGauche = new MainGauche();
+        String strAccord = mainGauche.genereAccordAbc("maj", 1);
     }
     
     

@@ -7,6 +7,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="Staff_desc">Staff</string>
     <string name="remplirBouton1">1 2 3 maj</string>
+    <string name="androidButton">Android Button</string>
+    
     
 
 </resources>
