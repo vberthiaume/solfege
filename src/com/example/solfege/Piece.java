@@ -21,7 +21,9 @@ public class Piece {
     
     public String generePiece(){
         
-       retour = "tabstave notation = true tablature = false\n"+maingauche.genereAccordAbc(2)+maindroite.genereAccordAbc(2);        
+       retour = "tabstave notation = true tablature = false clef = treble \n notes "+
+       maindroite.genereAccordAbc(2)+"\n tabstave notation = true tablature = false clef = bass \n notes "+
+               maingauche.genereAccordAbc(2);        
         
         return retour;
     }

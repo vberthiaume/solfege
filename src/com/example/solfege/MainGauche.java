@@ -152,7 +152,7 @@ public class MainGauche {
 
 	}
 	
-    private static final String[] notes= { "c", "c#", "d", "d#","e","f","f#","g","g#","a", "a#", "b","b#" }; // find the octave number
+    private static final String[] notes= { "C", "C#", "D", "D#","E","F","F#","G","G#","A", "A#", "B","B#" }; 
 	
 	private int abcToMidi(String note, int octave) {
 		int i;
