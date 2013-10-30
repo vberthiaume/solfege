@@ -20,12 +20,17 @@ public class MainActivity extends Activity {
         WebView lWebView = (WebView)findViewById(R.id.webView1);
         lWebView.getSettings().setJavaScriptEnabled(true);
         
-        //NOT WORKING Injection du code de MainGauche dans le Javascript de la webView...
-        lWebView.addJavascriptInterface(new MainGauche(), "maingauche");
-        
         //load the 
         //lWebView.loadUrl("file:///android_asset/VexTab.htm");
         lWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
+        
+        
+        //THIS WORKS
+        //lWebView.addJavascriptInterface(new JsObject(), "injectedObject");
+        
+        //NOT WORKING Injection du code de MainGauche dans le Javascript de la webView...
+        lWebView.addJavascriptInterface(new MainGauche(), "maingauche");
+        
         
         
         
@@ -44,6 +49,9 @@ public class MainActivity extends Activity {
         MainGauche mainGauche = new MainGauche();
         String strAccord = mainGauche.genereAccordAbc(1);
     }
-    
-    
+
 }
+
+
+
+

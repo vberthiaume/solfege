@@ -59,10 +59,15 @@
 	function buttonClicked(){ 
 		
 		//change the name of the button just to show that we can use an external variable
-		document.getElementById('myButton').value = javascriptVariable;
+		//document.getElementById('myButton').value = javascriptVariable;
+		//document.getElementById('myButton').value = injectedObject.toString();
+		document.getElementById('myButton').value = maingauche.genereAccordAbc(1);
+		
+		
 		
 		//TODO NOT WORKING
 		//document.getElementById('myButton').value = maingauche.genereAccordAbc();
+		
 		
 		
 		// Create the notes
