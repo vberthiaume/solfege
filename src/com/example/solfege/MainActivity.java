@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
     public void androidButtonClick(View view) {
     
         MainGauche mainGauche = new MainGauche();
-        String strAccord = mainGauche.genereAccordAbc("maj", 1);
+        String strAccord = mainGauche.genereAccordAbc(1);
     }
     
     
