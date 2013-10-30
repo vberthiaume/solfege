@@ -14,6 +14,7 @@ public class MainGauche {
 	private int[] accord;
 	private String mode;
 	private int random;
+	private int tempo;
 
 	public MainGauche() {
 		renversement = 0;
@@ -28,9 +29,8 @@ public class MainGauche {
 	/**
 	 * @param args
 	 */
-	public String genereAccordMidi(String modein, int degrein) {
+	public String genereAccordMidi( int degrein) {
 
-		set_mode(modein);
 		Vector reponse = gauche(degrein);
 		String retour = reponse.toString();
 		return retour;
@@ -43,9 +43,9 @@ public class MainGauche {
 	 * @return the 3 notes of a chord in abc notation (http://en.wikipedia.org/wiki/ABC_notation)
 	 */
 	@android.webkit.JavascriptInterface
-	public String genereAccordAbc(String modein, int degrein) {
+	public String genereAccordAbc( int degrein) {
 
-		set_mode(modein);
+		
 		Vector chord = gauche(degrein);
 		String strChord = chord.toString();
 
@@ -152,7 +152,7 @@ public class MainGauche {
 
 	}
 	
-    private static final String[] notes= { "c", "c#", "d", "d#","e","f","f#","g","g#","a", "a#", "b","b#" }; // find the octave number
+    private static final String[] notes= { "C", "C#", "D", "D#","E","F","F#","G","G#","A", "A#", "B","B#" }; 
 	
 	private int abcToMidi(String note, int octave) {
 		int i;
@@ -298,9 +298,13 @@ public class MainGauche {
 		return 0;
 	}
 
-	private void set_mode(String modein) {
+    protected void setMode(String modein) {
 
-		mode = modein;
-	}
+        mode = modein;
+    }
+    protected void setTempo(int val) {
+
+        this.tempo = val;
+    }
 
 }// MainGauche

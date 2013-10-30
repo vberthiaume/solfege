@@ -1,19 +1,24 @@
 package com.example.solfege;
 
-public class MainDroite extends Piece{
+public class MainDroite{
 
     private int     veloout;
     private int     hauteur;
     private int     degre;
     private int[][] gammes;
+    private int     tempo;
+    private String  mode;
     //TODO faire en sorte que ce tableau soit setté par sept curseurs sur l'interface (valeurs entre 0 et 10)
-    private int[]   probas_Notes =   { 7,  3,  4,  5,  7,  4,  3 };
-    
+    private int[]   probas_Notes =   { 4,  3,  4,  5,  7,  4,  3 };
+    private int[]   probas_Rythme =   { 0,  1,  4,  0};
+    private static final String[] notes= { "C", "C#", "D", "D#","E","F","F#","G","G#","A", "A#", "B","B#" }; 
     public MainDroite() {
 
-        this.veloout        =   60;
-        this.hauteur        =   48;
-        this.gammes         =   init_gammes();
+        
+        veloout        =   60;
+        hauteur        =   48;
+        gammes         =   init_gammes();
+
     }
 
     /**
@@ -27,14 +32,13 @@ public class MainDroite extends Piece{
         
         temp    = "";
         temp2   = "";
-        temp2   = String.format( " ( ( ( 4 4 ) ( %d ) ) ", super.tempo);
+        //temp2   = String.format( "   ( %d )  ", tempo);
         temp    = temp2;
         this.degre  =   degre;
 
         /******************************************************************/
-        if(super.mode.equals("maj")){
-            temp = rythmes(5,temp,0);
-        
+        if(mode.equals("maj")){
+            temp = rythmes(3,temp,0);
         }//if maj
         /******************************************************************/
         else{
@@ -43,7 +47,6 @@ public class MainDroite extends Piece{
         }//if min   
         /******************************************************************/
 
-        temp    += " ) ";
         return temp;
 
 
@@ -54,31 +57,40 @@ public class MainDroite extends Piece{
 
         String buffer = new String("");
         int test;
-
+        String duree = new String();
+        
         if(init < max_division){
         
             //Il choisi si oui ou non on va diviser ce temps.
             int max = (int)Math.pow(2, init);
             for( int i = 0 ; i < max ; i++){
                 
-                test = indice_table(this.probas_Notes,init);
+                test = indice_table(probas_Rythme,init);
     
                 //oui on le divise
                 if(test>0){
-                    temp = rythmes(max_division,temp,init+1);
+                    temp = this.rythmes(max_division,temp,init+1);
                           }//iftest   
         
         
         //non on le divise pas
-                else{
-                    buffer = String.format( " ( %d/%d ( %d %d ) ) ",
-                    plussz_decide_rest(16),
-                    max,
-                    100*(degre2midi(degre)+hauteur+12+gammes[degre][cherche_table(this.probas_Notes)]),
-                    veloout);
+                
+                    // The currently available durations are: w h q 8 16 32, for whole, half, quarter, eighth, sixteenth, and thirty-second note durations.
+                if(max==1) duree ="w";
+                if(max==2) duree ="h";
+                if(max==3) duree ="q";
+                if(max==4) duree ="8";
+                if(max==5) duree ="16";
+                
+                    buffer = String.format( " :%s %s/4"
+                    //plussz_decide_rest(16),
+                            ,duree
+                            ,notes[(degre2midi(degre)+gammes[degre][cherche_table(this.probas_Notes)])%12]
                     
-                    temp = buffer;
-                    }//else
+                    );
+                    
+                    temp = temp+buffer;
+                    
             }//for
         }//if<5             
         return temp;
@@ -120,11 +132,11 @@ public class MainDroite extends Piece{
     }//rythmes_min
 
     
-    int indice_table(int[] table,int i){
+    private int indice_table(int[] table,int i){
 
-        int temp, r;
+        int temp;
         
-        r = (int) Math.random()*6;
+        int r = (int)(Math.random()*10);
         temp = table[i]; 
         
         if( r < temp ){
@@ -157,7 +169,7 @@ public class MainDroite extends Piece{
      */
     int degre2midi(int degre){
 
-        if(super.mode.equals("maj")){ 
+        if(mode.equals("maj")){ 
             switch(degre){
             case 0:
                 return 0;
@@ -213,7 +225,7 @@ public class MainDroite extends Piece{
             }
 
             if(sum == 0){return(-1);}
-            else{rand_nb = (int)Math.random()*(100*sum)+1;}
+            else{rand_nb = (int)(Math.random()*(100*sum)+1);}
 
             for(i = 0; i<size;i++){
                 indice = indice+table[i]*100;
@@ -282,7 +294,6 @@ public class MainDroite extends Piece{
                 return gammesinit;
         }
 
-
     
 
     protected void setVeloout(int veloout) {
@@ -293,6 +304,14 @@ public class MainDroite extends Piece{
         this.hauteur = hauteur;
     }
 
+    protected void setTempo(int val){
+        
+        this.tempo = val;
+    }
+    protected void setMode(String val){
+        this.mode = val;
+    }
+    
 }//class mainDroite
 
 

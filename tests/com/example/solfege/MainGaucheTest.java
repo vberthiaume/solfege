@@ -30,7 +30,7 @@ public class MainGaucheTest {
     public void testGenereAccordAbc() {
         MainGauche tester = new MainGauche();
         
-        System.out.println(tester.genereAccordAbc("maj",1));
+        System.out.println(tester.genereAccordAbc(1));
     }
 
     @Test
