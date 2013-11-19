@@ -66,7 +66,8 @@ public class MainGauche {
 		strAbcChord +=")";
 		
 		//put them in a string like "a b c"
-		return strAbcChord.trim();            //TODO faire une fonction qui prépare le contexte (barres de mesures+clef+tab=false...etc)
+		//TODO faire une fonction qui prépare le contexte (barres de mesures+clef+tab=false...etc)
+		return strAbcChord.trim();            
 		
 	}
 
