@@ -35,16 +35,10 @@ public final class R {
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0b0000;
-<<<<<<< HEAD
-        public static final int action_settings=0x7f0b0004;
-        public static final int paired_devices=0x7f0b0003;
-        public static final int title_paired_devices=0x7f0b0002;
-=======
         public static final int action_settings=0x7f0b0005;
         public static final int button1=0x7f0b0002;
         public static final int paired_devices=0x7f0b0004;
         public static final int title_paired_devices=0x7f0b0003;
->>>>>>> 365d788f5cb534d348b42928c74dd57805b49152
         public static final int webView1=0x7f0b0001;
     }
     public static final class layout {
@@ -59,18 +53,12 @@ public final class R {
         public static final int extra_abs=0x7f050000;
         public static final int piano_c1=0x7f050001;
         public static final int silence=0x7f050002;
-<<<<<<< HEAD
-=======
         public static final int tuner=0x7f050003;
->>>>>>> 365d788f5cb534d348b42928c74dd57805b49152
     }
     public static final class string {
         public static final int Staff_desc=0x7f06001a;
         public static final int action_settings=0x7f060018;
-<<<<<<< HEAD
-=======
         public static final int androidButton=0x7f06001c;
->>>>>>> 365d788f5cb534d348b42928c74dd57805b49152
         public static final int app_name=0x7f060016;
         public static final int button_send=0x7f060017;
         public static final int none_paired=0x7f060001;

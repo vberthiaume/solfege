@@ -2,13 +2,14 @@
 ## Eclipse
 #################
 
+
+gen/
 *.pydevproject
 .project
 .metadata
 bin
 .metadata
 bin/
-gen/
 project.properties
 Solfege/bin/
 Solfege/.classpath
