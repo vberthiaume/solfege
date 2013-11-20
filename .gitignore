@@ -8,6 +8,8 @@
 bin
 .metadata
 bin/
+gen/
+project.properties
 Solfege/bin/
 Solfege/.classpath
 tmp/
