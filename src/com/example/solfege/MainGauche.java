@@ -42,8 +42,9 @@ public class MainGauche {
 	 * @param degrein degree of the chord, valid values are [???,???]
 	 * @return the 3 notes of a chord in abc notation (http://en.wikipedia.org/wiki/ABC_notation)
 	 */
-	@android.webkit.JavascriptInterface
-	public String genereAccordAbc( int degrein) {
+	
+    @JavascriptInterface
+    public String genereAccordAbc( int degrein) {
 
 		
 		Vector chord = gauche(degrein);
@@ -65,7 +66,8 @@ public class MainGauche {
 		strAbcChord +=")";
 		
 		//put them in a string like "a b c"
-		return strAbcChord.trim();            //TODO faire une fonction qui prépare le contexte (barres de mesures+clef+tab=false...etc)
+		//TODO faire une fonction qui prépare le contexte (barres de mesures+clef+tab=false...etc)
+		return strAbcChord.trim();            
 		
 	}
 
@@ -297,6 +299,8 @@ public class MainGauche {
 		}// else (Mineur)
 		return 0;
 	}
+	
+
 
     protected void setMode(String modein) {
 
@@ -307,4 +311,5 @@ public class MainGauche {
         this.tempo = val;
     }
 
+//>>>>>>> 915c5228e5f402788842360e87f5baec00473420
 }// MainGauche

@@ -219,3 +219,4 @@ pip-log.txt
 .mr.developer.cfg
 /project.properties
 /.gitignore
+/gpl.txt
