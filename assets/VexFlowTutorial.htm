@@ -59,19 +59,18 @@
 	function buttonClicked(){ 
 		
 		//change the name of the button just to show that we can use an external variable
-		//document.getElementById('myButton').value = javascriptVariable;
-		//document.getElementById('myButton').value = injectedObject.toString();
+		
+		
 		var textFromMainGauche = maingauche.genereAccordAbc(1);
+		
 		document.getElementById('myButton').value = textFromMainGauche;
 		
+		//this should be textFromMainGauche
 		var texteTest = ["B/4", "C/4", "G/4"]
-		
-		
+				
 		// Create the notes
 		var notes = [
-		  //new Vex.Flow.StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "w" })
 		  new Vex.Flow.StaveNote({ keys: texteTest, duration: "w" })
-		  //new Vex.Flow.StaveNote({ keys: ["A/4", "C/4", "G/4"], duration: "w" })
 		];
 		
 		// Create a voice in 4/4
@@ -97,7 +96,7 @@
   <div class="content">
     <div class="description two">
       <div class="example a" example="a">
-        <canvas width="200" height="120"></canvas>
+        <canvas width="200" height="200"></canvas>
         <p>
         <script>
 			var canvas = $("div.two div.a canvas")[0];
@@ -105,9 +104,14 @@
 			
 			var ctx = renderer.getContext();
 			var stave = new Vex.Flow.Stave(10, 0, 200);
-			stave.addClef("treble").setContext(ctx).draw();
+			stave.addClef("bass").setContext(ctx).draw();
+			
+			var stave2 = new Vex.Flow.Stave(10, 75, 200);
+			stave2.addClef("treble").setContext(ctx).draw();
+			
 
         </script>
+        
         <input type="button" id ="myButton" onclick="buttonClicked()" value="add notation">
   		<script "text/javascript">var javascriptVariable = "javascriptVariableContent";</script>
       </p></div>
