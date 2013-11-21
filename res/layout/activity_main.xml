@@ -12,7 +12,7 @@
     android:padding="10dp" >
 
     <WebView
-        android:id="@+id/webView1"
+        android:id="@+id/partitionHtml"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,12 +20,21 @@
         android:overScrollMode="always" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/webView1"
+        android:layout_alignLeft="@+id/partitionHtml"
         android:layout_alignParentBottom="true"
-        android:text="@string/androidButton"
-        android:onClick ="androidButtonClick" />
+        android:text="@string/playButton"
+        android:onClick ="onPlayButtonClick" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/playButton"
+        android:layout_alignRight="@+id/partitionHtml"
+        android:text="@string/settingsButton" 
+        android:onClick ="onSettingsButtonClick"/>
 
 </RelativeLayout>

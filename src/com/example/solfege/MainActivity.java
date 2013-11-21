@@ -10,14 +10,17 @@ import org.puredata.core.PdBase;
 import org.puredata.core.utils.IoUtils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
-
+	
+	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	private static final String TAG = "Solfege";
 	private PdUiDispatcher dispatcher;
 
@@ -26,7 +29,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		WebView lWebView = (WebView) findViewById(R.id.webView1);
+		WebView lWebView = (WebView) findViewById(R.id.partitionHtml);
 		lWebView.getSettings().setJavaScriptEnabled(true);
 
 		// load the
@@ -62,8 +65,7 @@ public class MainActivity extends Activity {
 
 	private void loadPatch() throws IOException {
 		File dir = getFilesDir();
-		IoUtils.extractZipResource(getResources().openRawResource(R.raw.tuner),
-				dir, true);
+//		IoUtils.extractZipResource(getResources().openRawResource(R.raw.tuner), dir, true);
 		File patchFile = new File(dir, "tuner.pd");
 		int val = PdBase.openPatch(patchFile.getAbsolutePath());
 	}
@@ -75,13 +77,21 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	public void androidButtonClick(View view) {
+	public void onPlayButtonClick(View view) {
 
 		// MainGauche mainGauche = new MainGauche();
 		// String strAccord = mainGauche.genereAccordAbc(1);
-
 		triggerNote(99); // E is MIDI note 40.
-
+	}
+	
+	public void onSettingsButtonClick(View view) {
+		
+//		Intent intent = new Intent(this, DisplayMessageActivity.class);
+//	    EditText editText = (EditText) findViewById(R.id.edit_message);
+//	    String message = editText.getText().toString();
+//	    intent.putExtra(EXTRA_MESSAGE, message);
+//	    startActivity(intent);
+		
 	}
 
 	@Override

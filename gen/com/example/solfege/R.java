@@ -35,11 +35,12 @@ public final class R {
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0b0000;
-        public static final int action_settings=0x7f0b0005;
-        public static final int button1=0x7f0b0002;
-        public static final int paired_devices=0x7f0b0004;
-        public static final int title_paired_devices=0x7f0b0003;
-        public static final int webView1=0x7f0b0001;
+        public static final int action_settings=0x7f0b0006;
+        public static final int paired_devices=0x7f0b0005;
+        public static final int partitionHtml=0x7f0b0001;
+        public static final int playButton=0x7f0b0002;
+        public static final int settingsButton=0x7f0b0003;
+        public static final int title_paired_devices=0x7f0b0004;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -58,10 +59,10 @@ public final class R {
     public static final class string {
         public static final int Staff_desc=0x7f06001a;
         public static final int action_settings=0x7f060018;
-        public static final int androidButton=0x7f06001c;
         public static final int app_name=0x7f060016;
         public static final int button_send=0x7f060017;
         public static final int none_paired=0x7f060001;
+        public static final int playButton=0x7f06001c;
         public static final int pref_key_inchannels=0x7f060010;
         public static final int pref_key_outchannels=0x7f060013;
         public static final int pref_key_srate=0x7f06000d;
@@ -75,6 +76,7 @@ public final class R {
         public static final int pref_title_srate=0x7f06000e;
         public static final int remplirBouton1=0x7f06001b;
         public static final int select_device=0x7f060000;
+        public static final int settingsButton=0x7f06001d;
         public static final int title_activity_main=0x7f060019;
         public static final int title_no_paired_devices=0x7f060003;
         public static final int title_no_usb_devices_available=0x7f060008;
