@@ -63,8 +63,7 @@ public class VerticalSeekBar extends SeekBar {
 		case MotionEvent.ACTION_MOVE:
 			// Calling the super seems to help fix drawing problems
 			super.onTouchEvent(event);
-			int progress = getMax()
-					- (int) (getMax() * event.getY() / getHeight());
+			int progress = getMax() - (int) (getMax() * event.getY() / getHeight());
 
 			// Ensure progress stays within boundaries of the seekbar
 			if (progress < 0) {
