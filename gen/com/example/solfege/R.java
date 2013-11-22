@@ -35,20 +35,49 @@ public final class R {
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0b0000;
-        public static final int action_settings=0x7f0b0006;
-        public static final int paired_devices=0x7f0b0005;
+        public static final int action_settings=0x7f0b0021;
+        public static final int paired_devices=0x7f0b0020;
         public static final int partitionHtml=0x7f0b0001;
         public static final int playButton=0x7f0b0002;
+        public static final int seekBarFifthDeg=0x7f0b0015;
+        public static final int seekBarFirstDeg=0x7f0b0009;
+        public static final int seekBarFourthDeg=0x7f0b0012;
+        public static final int seekBarSecondDeg=0x7f0b000c;
+        public static final int seekBarSeventhDeg=0x7f0b001b;
+        public static final int seekBarSixthDeg=0x7f0b0018;
+        public static final int seekBarThirdDeg=0x7f0b000f;
+        public static final int settingsBotHalf=0x7f0b001e;
         public static final int settingsButton=0x7f0b0003;
-        public static final int title_paired_devices=0x7f0b0004;
+        public static final int settingsLayout=0x7f0b0004;
+        public static final int settingsSeekGraphLayout=0x7f0b0006;
+        public static final int settingsSeekbarFifthLayout=0x7f0b0014;
+        public static final int settingsSeekbarFirstLayout=0x7f0b0008;
+        public static final int settingsSeekbarFourthLayout=0x7f0b0011;
+        public static final int settingsSeekbarLayout=0x7f0b0007;
+        public static final int settingsSeekbarSecondLayout=0x7f0b000b;
+        public static final int settingsSeekbarSeventhLayout=0x7f0b001a;
+        public static final int settingsSeekbarSixthLayout=0x7f0b0017;
+        public static final int settingsSeekbarThirdLayout=0x7f0b000e;
+        public static final int settingsTopHalf=0x7f0b0005;
+        public static final int textViewNoteProbFifthLabel=0x7f0b0016;
+        public static final int textViewNoteProbFirstLabel=0x7f0b000a;
+        public static final int textViewNoteProbFourthLabel=0x7f0b0013;
+        public static final int textViewNoteProbLabel=0x7f0b001d;
+        public static final int textViewNoteProbSecondLabel=0x7f0b000d;
+        public static final int textViewNoteProbSeventhLabel=0x7f0b001c;
+        public static final int textViewNoteProbSixthLabel=0x7f0b0019;
+        public static final int textViewNoteProbThirdLabel=0x7f0b0010;
+        public static final int title_paired_devices=0x7f0b001f;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int device_list=0x7f030001;
-        public static final int device_name=0x7f030002;
+        public static final int activity_settings=0x7f030001;
+        public static final int device_list=0x7f030002;
+        public static final int device_name=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
+        public static final int settings=0x7f0a0001;
     }
     public static final class raw {
         public static final int extra_abs=0x7f050000;
@@ -62,6 +91,7 @@ public final class R {
         public static final int app_name=0x7f060016;
         public static final int button_send=0x7f060017;
         public static final int none_paired=0x7f060001;
+        public static final int noteProbLabel=0x7f06001f;
         public static final int playButton=0x7f06001c;
         public static final int pref_key_inchannels=0x7f060010;
         public static final int pref_key_outchannels=0x7f060013;
@@ -78,6 +108,7 @@ public final class R {
         public static final int select_device=0x7f060000;
         public static final int settingsButton=0x7f06001d;
         public static final int title_activity_main=0x7f060019;
+        public static final int title_activity_settings=0x7f06001e;
         public static final int title_no_paired_devices=0x7f060003;
         public static final int title_no_usb_devices_available=0x7f060008;
         public static final int title_no_usb_midi_input_available=0x7f060009;

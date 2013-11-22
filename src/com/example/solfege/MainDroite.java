@@ -8,9 +8,20 @@ public class MainDroite{
     private int[][] gammes;
     private int     tempo;
     private String  mode;
+    
+    
     //TODO faire en sorte que ce tableau soit setté par sept curseurs sur l'interface (valeurs entre 0 et 10)
     private int[]   probas_Notes =   { 4,  3,  4,  5,  7,  4,  3 };
-    private int[]   probas_Rythme =   { 0,  1,  4,  0};
+    
+    
+    public int[] getProbas_Notes() {
+		return probas_Notes;
+	}
+
+	public void setProbas_Notes(int[] probas_Notes) {
+		this.probas_Notes = probas_Notes;
+	}
+	private int[]   probas_Rythme =   { 0,  1,  4,  0};
     private static final String[] notes= { "C", "C#", "D", "D#","E","F","F#","G","G#","A", "A#", "B","B#" }; 
     public MainDroite() {
 

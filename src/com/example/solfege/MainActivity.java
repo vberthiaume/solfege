@@ -17,27 +17,31 @@ import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
+import android.widget.SeekBar;
 
 public class MainActivity extends Activity {
 	
-	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	private static final String TAG = "Solfege";
 	private PdUiDispatcher dispatcher;
+	private MainDroite mainDroite;
+	
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		WebView lWebView = (WebView) findViewById(R.id.partitionHtml);
-		lWebView.getSettings().setJavaScriptEnabled(true);
+		//initialize MainDroite
+		mainDroite = new MainDroite();
+		
+		// load the notation view
+		WebView notationWebView = (WebView) findViewById(R.id.partitionHtml);
+		notationWebView.getSettings().setJavaScriptEnabled(true);
+		notationWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
+		notationWebView.addJavascriptInterface(new MainGauche(), "maingauche");
 
-		// load the
-		// lWebView.loadUrl("file:///android_asset/VexTab.htm");
-		lWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
-
-		lWebView.addJavascriptInterface(new MainGauche(), "maingauche");
-
+		//initialise PD path
 		try {
 			initPd();
 			loadPatch();
@@ -45,8 +49,8 @@ public class MainActivity extends Activity {
 			Log.e(TAG, e.toString());
 			finish();
 		}
-
 	}
+	
 
 	private void triggerNote(int n) {
 		PdBase.sendFloat("midinote", n);
@@ -86,11 +90,11 @@ public class MainActivity extends Activity {
 	
 	public void onSettingsButtonClick(View view) {
 		
-//		Intent intent = new Intent(this, DisplayMessageActivity.class);
+		Intent intent = new Intent(this, SettingsActivity.class);
 //	    EditText editText = (EditText) findViewById(R.id.edit_message);
 //	    String message = editText.getText().toString();
-//	    intent.putExtra(EXTRA_MESSAGE, message);
-//	    startActivity(intent);
+//	    intent.putExtra("this is a message", message);
+	    startActivity(intent);
 		
 	}
 
