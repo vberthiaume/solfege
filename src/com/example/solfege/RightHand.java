@@ -1,6 +1,6 @@
 package com.example.solfege;
 
-public class MainDroite {
+public class RightHand {
 
 	private int veloout;
 	private int hauteur;
@@ -11,20 +11,22 @@ public class MainDroite {
 
 	// TODO faire en sorte que ce tableau soit setté par sept curseurs sur
 	// l'interface (valeurs entre 0 et 10)
-	private int[] probas_Notes = { 4, 3, 4, 5, 7, 4, 3 };
+	private int[] degreeProbability = { 4, 3, 4, 5, 7, 4, 3 };
 
-	public int[] getProbas_Notes() {
-		return probas_Notes;
+	public int[] getDegreeProbability() {
+		return degreeProbability;
 	}
 
-	public void setProbas_Notes(int[] probas_Notes) {
-		this.probas_Notes = probas_Notes;
+	public void setDegreeProbability(int[] p_DegreeProbability) {
+		this.degreeProbability = p_DegreeProbability;
 	}
 
-	private int[] probas_Rythme = { 0, 1, 4, 0 }; //aussi entre 0 et 10
+	//aussi entre 0 et 10
+	private int[] rhythmProbability = { 0, 1, 4, 0 };
+	
 	private static final String[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "B#" };
 
-	public MainDroite() {
+	public RightHand() {
 
 		veloout = 60;
 		hauteur = 48;
@@ -75,7 +77,7 @@ public class MainDroite {
 			int max = (int) Math.pow(2, init);
 			for (int i = 0; i < max; i++) {
 
-				test = indice_table(probas_Rythme, init);
+				test = indice_table(rhythmProbability, init);
 
 				// oui on le divise
 				if (test > 0) {
@@ -103,7 +105,7 @@ public class MainDroite {
 						// plussz_decide_rest(16),
 						,
 								duree,
-								notes[(degre2midi(degre) + gammes[degre][cherche_table(this.probas_Notes)]) % 12]
+								notes[(degre2midi(degre) + gammes[degre][cherche_table(this.degreeProbability)]) % 12]
 
 						);
 
@@ -126,7 +128,7 @@ public class MainDroite {
 
 			for (int i = 0; i < max; i++) {
 
-				test = indice_table(this.probas_Notes, init);
+				test = indice_table(this.degreeProbability, init);
 
 				// oui on le divise
 				if (test > 0) {
@@ -138,7 +140,7 @@ public class MainDroite {
 					buffer = String.format(" ( %d/%d ( %d %d ) ) ",
 									plussz_decide_rest(16),
 									max,
-									100 * (degre2midi(degre) + hauteur + 12 + gammes[degre + 7][cherche_table(this.probas_Notes)]),
+									100 * (degre2midi(degre) + hauteur + 12 + gammes[degre + 7][cherche_table(this.degreeProbability)]),
 									veloout);
 
 					temp = buffer;
@@ -356,6 +358,14 @@ public class MainDroite {
 
 	protected void setMode(String val) {
 		this.mode = val;
+	}
+
+	public int[] getRhythmProbability() {
+		return rhythmProbability;
+	}
+
+	public void setRhythmProbability(int[] rhythmProbability) {
+		this.rhythmProbability = rhythmProbability;
 	}
 
 }// class mainDroite

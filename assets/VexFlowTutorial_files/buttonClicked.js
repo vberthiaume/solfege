@@ -27,7 +27,7 @@
 		// Format and justify the notes to 200 pixels
 		var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 200);
 		
-		// Render voice
+		// Render voice... this is weird because the staves are defined in another file, in vexFlowTutorial...
 		voice.draw(ctx, stave);
 		voice.draw(ctx, stave2);
 		

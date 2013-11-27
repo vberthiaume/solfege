@@ -2,8 +2,8 @@ package com.example.solfege;
 
 public class Piece {
 
-    public  MainGauche maingauche;
-    public  MainDroite maindroite;
+    public  LeftHand maingauche;
+    public  RightHand maindroite;
     public int     tempo;
     public String  mode;
     String retour;
@@ -11,8 +11,8 @@ public class Piece {
     public Piece() {
         
 
-        maingauche  =   new MainGauche();
-        maindroite  =   new MainDroite();
+        maingauche  =   new LeftHand();
+        maindroite  =   new RightHand();
         this.setMode("maj");
         this.setTempo(90);
         

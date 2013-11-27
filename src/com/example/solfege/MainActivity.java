@@ -23,9 +23,12 @@ import android.widget.SeekBar;
 public class MainActivity extends Activity {
 	
 	private static final String TAG = "Solfege";
+	static final int SET_PROBABILITY_SETTINGS = 0;
+	public final static String DEGREE_PROBABILITY = "com.example.solfege.DEGREE_PROBABILITY";
+	public final static String RHYTHM_PROBABILITY = "com.example.solfege.RHYTHM_PROBABILITY";
 	private PdUiDispatcher dispatcher;
-	private MainDroite mainDroite;
-	private MainGauche mainGauche;
+	private RightHand mainDroite;
+	private LeftHand mainGauche;
 	
 
 
@@ -35,8 +38,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		//initialize right and left hands
-		mainDroite = new MainDroite();
-		mainGauche = new MainGauche();
+		mainDroite = new RightHand();
+		mainGauche = new LeftHand();
 		
 		// load the notation view
 		WebView notationWebView = (WebView) findViewById(R.id.partitionHtml);
@@ -93,13 +96,29 @@ public class MainActivity extends Activity {
 	
 	public void onSettingsButtonClick(View view) {
 		
+		//create an intent to start the settings activity
 		Intent intent = new Intent(this, SettingsActivity.class);
-//	    EditText editText = (EditText) findViewById(R.id.edit_message);
-//	    String message = editText.getText().toString();
-//	    intent.putExtra("this is a message", message);
-	    startActivity(intent);
+		
+		intent.putExtra(DEGREE_PROBABILITY, mainDroite.getDegreeProbability());
+		intent.putExtra(RHYTHM_PROBABILITY, mainDroite.getRhythmProbability());
+		
+		//create the activity, asking for a result
+	    //startActivity(intent);
+		startActivityForResult(intent,  SET_PROBABILITY_SETTINGS);
 		
 	}
+	
+	//called when other activities end
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	
+    	//if the activity that ended what the settings activity
+        if (requestCode == SET_PROBABILITY_SETTINGS) {
+            if (resultCode == RESULT_OK) {
+            	mainDroite.setDegreeProbability(data.getIntArrayExtra(MainActivity.DEGREE_PROBABILITY));
+            	mainDroite.setRhythmProbability(data.getIntArrayExtra(MainActivity.RHYTHM_PROBABILITY));
+            }
+        }
+    }
 
 	@Override
 	protected void onResume() {

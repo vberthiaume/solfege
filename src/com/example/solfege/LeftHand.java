@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Vector;
 import android.webkit.JavascriptInterface;
 
-public class MainGauche {
+public class LeftHand {
 
 	private int renversement;
 	private int hauteur;
@@ -16,7 +16,7 @@ public class MainGauche {
 	private int random;
 	private int tempo;
 
-	public MainGauche() {
+	public LeftHand() {
 		renversement = 0;
 		hauteur = 48;
 		degre = 1;
