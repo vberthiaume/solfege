@@ -8,6 +8,7 @@ import android.widget.SeekBar;
 public class SettingsActivity extends Activity {
 
 	private SeekBar[] seekBarNotes = new SeekBar[7];
+	private SeekBar[] seekBarRhythms = new SeekBar[4];
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +16,7 @@ public class SettingsActivity extends Activity {
 		setContentView(R.layout.activity_settings);
 
 		// initialize the seek bars for degree probability
-		initNoteProbSeekBars();
+		initVerticalSeekBars();
 	}
 
 	@Override
@@ -25,7 +26,7 @@ public class SettingsActivity extends Activity {
 		return true;
 	}
 
-	private void initNoteProbSeekBars() {
+	private void initVerticalSeekBars() {
 
 		seekBarNotes[0] = (VerticalSeekBar) findViewById(R.id.seekBarFirstDeg);
 		seekBarNotes[1] = (VerticalSeekBar) findViewById(R.id.seekBarSecondDeg);
@@ -34,9 +35,18 @@ public class SettingsActivity extends Activity {
 		seekBarNotes[4] = (VerticalSeekBar) findViewById(R.id.seekBarFifthDeg);
 		seekBarNotes[5] = (VerticalSeekBar) findViewById(R.id.seekBarSixthDeg);
 		seekBarNotes[6] = (VerticalSeekBar) findViewById(R.id.seekBarSeventhDeg);
+		
+		seekBarRhythms[0] = (VerticalSeekBar) findViewById(R.id.seekBarFirstRhythm);
+		seekBarRhythms[1] = (VerticalSeekBar) findViewById(R.id.seekBarSecondRhythm);
+		seekBarRhythms[2] = (VerticalSeekBar) findViewById(R.id.seekBarThirdRhythm);
+		seekBarRhythms[3] = (VerticalSeekBar) findViewById(R.id.seekBarFourthRhythm);
 
-		for (int iCurNote = 0; iCurNote < 7; ++iCurNote) {
-			seekBarNotes[iCurNote].setOnSeekBarChangeListener(new OnVerticalSeekBarChangeListener());
+		for (int iCurParam = 0; iCurParam < seekBarNotes.length; ++iCurParam) {
+			seekBarNotes[iCurParam].setOnSeekBarChangeListener(new OnVerticalSeekBarChangeListener());
+			
+			if (iCurParam < seekBarRhythms.length){
+				seekBarRhythms[iCurParam].setOnSeekBarChangeListener(new OnVerticalSeekBarChangeListener());
+			}
 		}
 
 	}

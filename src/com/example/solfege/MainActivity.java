@@ -9,6 +9,7 @@ import org.puredata.android.utils.PdUiDispatcher;
 import org.puredata.core.PdBase;
 import org.puredata.core.utils.IoUtils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
 	private static final String TAG = "Solfege";
 	private PdUiDispatcher dispatcher;
 	private MainDroite mainDroite;
+	private MainGauche mainGauche;
 	
 
 
@@ -32,16 +34,17 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		//initialize MainDroite
+		//initialize right and left hands
 		mainDroite = new MainDroite();
+		mainGauche = new MainGauche();
 		
 		// load the notation view
 		WebView notationWebView = (WebView) findViewById(R.id.partitionHtml);
 		notationWebView.getSettings().setJavaScriptEnabled(true);
 		notationWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
-		notationWebView.addJavascriptInterface(new MainGauche(), "maingauche");
+		notationWebView.addJavascriptInterface(mainGauche, "maingauche");
 
-		//initialise PD path
+		//Initialize PD path
 		try {
 			initPd();
 			loadPatch();

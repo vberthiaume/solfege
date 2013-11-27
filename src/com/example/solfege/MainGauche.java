@@ -38,14 +38,12 @@ public class MainGauche {
 	
 	/**
 	 * Generates a string of 3 notes representing a chord in abc notation and wrap it for the vextab notation.
-	 * @param modein either "maj" or "min"--> should be bool then?
 	 * @param degrein degree of the chord, valid values are [???,???]
 	 * @return the 3 notes of a chord in abc notation (http://en.wikipedia.org/wiki/ABC_notation)
 	 */
 	
     @JavascriptInterface
     public String genereAccordAbc( int degrein) {
-
 		
 		Vector chord = gauche(degrein);
 		String strChord = chord.toString();
@@ -53,23 +51,23 @@ public class MainGauche {
 		//get numbers from string in ints
 		String[] strChordMidiNotes =  strChord.substring(1, strChord.length()-1).split(",");
 		
-		String strAbcChord = "(";
+		String strAbcChord = "";//"[";
 		//use midiToAbc() to get the corresponding letters
 		for (int iCurNote = 0; iCurNote < strChordMidiNotes.length; ++iCurNote){
 			try {
-				strAbcChord += midiToAbc(Integer.parseInt(strChordMidiNotes[iCurNote].trim())) + "/4.";
+				strAbcChord += midiToAbc(Integer.parseInt(strChordMidiNotes[iCurNote].trim())) + "/4 ";
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
 		}
-		strAbcChord = strAbcChord.substring(0, strAbcChord.length()-1);
-		strAbcChord +=")";
-		
-		//put them in a string like "a b c"
+
 		//TODO faire une fonction qui prépare le contexte (barres de mesures+clef+tab=false...etc)
+		
+		//put them in a string like "a/4 b/4 c/4"
 		return strAbcChord.trim();            
 		
 	}
+	
 
 	public Vector gauche(int n) {
 

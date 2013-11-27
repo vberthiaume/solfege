@@ -1,8 +1,5 @@
-
 <!DOCTYPE html>
-<!-- saved from url=(0037)http://vexflow.com/docs/tutorial.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>The VexFlow Tutorial</title>
   
   <!-- VexFlow Compiled Source -->
   <script src="./VexFlowTutorial_files/vexflow-min.js"></script><style type="text/css"></style>
@@ -10,6 +7,7 @@
   <!-- Support Sources -->
   <script src="./VexFlowTutorial_files/jquery.js"></script>
   <script src="./VexFlowTutorial_files/raphael.js"></script>
+  <script src="./VexFlowTutorial_files/buttonClicked.js"></script>
 
   <style type="text/css">
     canvas {
@@ -25,7 +23,7 @@
   </style>
 
   <script>
-    /* Take raw javascript code, and return moderately useful HTML */
+    // Take raw javascript code, and return moderately useful HTML
     function prettify_code(code) {
       var lines = code.split(/\r\n|\n|\r/);
       var new_lines = [];
@@ -41,10 +39,8 @@
       return pretty_code;
     }
 
-    /*
-       Find all the javascript examples and copy their source code
-       into the associated <code> blocks.
-    */
+    
+    //Find all the javascript examples and copy their source code into the associated <code> blocks.
     $(function() {
       $("div.description").each(function(index, sel) {
         codes = $(sel).find("code.example");
@@ -56,40 +52,6 @@
          })
       })
     })
- 
-	function buttonClicked(){ 
-		
-		//change the name of the button just to show that we can use an external variable
-
-		var textFromMainGauche = maingauche.genereAccordAbc(1);
-		document.getElementById('myButton').value = textFromMainGauche;
-		
-		var texteTest = ["B/4", "C/4", "G/4"]
-		
-		
-		// Create the notes
-		var notes = [
-		  new Vex.Flow.StaveNote({ keys: texteTest, duration: "w" })
-		];
-		
-		// Create a voice in 4/4
-		var voice = new Vex.Flow.Voice({
-		  num_beats: 4,
-		  beat_value: 4,
-		  resolution: Vex.Flow.RESOLUTION
-		});
-		
-		// Add notes to voice
-		voice.addTickables(notes);
-		
-		// Format and justify the notes to 200 pixels
-		var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 200);
-		
-		// Render voice
-		voice.draw(ctx, stave);
-		voice.draw(ctx, stave2);
-		
-	}
 	</script>
 </head>
 <body>

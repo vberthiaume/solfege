@@ -11,5 +11,12 @@
     <string name="settingsButton">Paramètres</string>
     <string name="title_activity_settings">Solfege - Paramètres]</string>
     <string name="noteProbLabel">Probabilité de lecture des degrés</string>
+    <string name="rhythmProbLabel">Probabilité de lecture des rythmes</string>
+    <string name="firstRhythmProbLabel">Croche</string>
+    <string name="secondRhythmProbLabel">Noire</string>
+    <string name="thirdRhythmProbLabel">Blanche</string>
+    <string name="fourthRhythmProbLabel">Ronde</string>
+    
+    
 
 </resources>
