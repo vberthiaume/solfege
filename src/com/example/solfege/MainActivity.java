@@ -23,12 +23,12 @@ import android.widget.SeekBar;
 public class MainActivity extends Activity {
 	
 	private static final String TAG = "Solfege";
-	static final int SET_PROBABILITY_SETTINGS = 0;
+	static final int SET_PROBABILITY_SETTINGS = 1;
 	public final static String DEGREE_PROBABILITY = "com.example.solfege.DEGREE_PROBABILITY";
 	public final static String RHYTHM_PROBABILITY = "com.example.solfege.RHYTHM_PROBABILITY";
 	private PdUiDispatcher dispatcher;
-	private RightHand mainDroite;
-	private LeftHand mainGauche;
+	private RightHand rightHand;
+	private LeftHand leftHand;
 	
 
 
@@ -38,14 +38,15 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		//initialize right and left hands
-		mainDroite = new RightHand();
-		mainGauche = new LeftHand();
+		rightHand = new RightHand();
+		leftHand = new LeftHand();
 		
 		// load the notation view
 		WebView notationWebView = (WebView) findViewById(R.id.partitionHtml);
 		notationWebView.getSettings().setJavaScriptEnabled(true);
 		notationWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
-		notationWebView.addJavascriptInterface(mainGauche, "maingauche");
+		notationWebView.addJavascriptInterface(leftHand, "lefthand");
+		notationWebView.addJavascriptInterface(rightHand, "righthand");
 
 		//Initialize PD path
 		try {
@@ -99,8 +100,8 @@ public class MainActivity extends Activity {
 		//create an intent to start the settings activity
 		Intent intent = new Intent(this, SettingsActivity.class);
 		
-		intent.putExtra(DEGREE_PROBABILITY, mainDroite.getDegreeProbability());
-		intent.putExtra(RHYTHM_PROBABILITY, mainDroite.getRhythmProbability());
+		intent.putExtra(DEGREE_PROBABILITY, rightHand.getDegreeProbability());
+		intent.putExtra(RHYTHM_PROBABILITY, rightHand.getRhythmProbability());
 		
 		//create the activity, asking for a result
 	    //startActivity(intent);
@@ -114,8 +115,8 @@ public class MainActivity extends Activity {
     	//if the activity that ended what the settings activity
         if (requestCode == SET_PROBABILITY_SETTINGS) {
             if (resultCode == RESULT_OK) {
-            	mainDroite.setDegreeProbability(data.getIntArrayExtra(MainActivity.DEGREE_PROBABILITY));
-            	mainDroite.setRhythmProbability(data.getIntArrayExtra(MainActivity.RHYTHM_PROBABILITY));
+            	rightHand.setDegreeProbability(data.getIntArrayExtra(MainActivity.DEGREE_PROBABILITY));
+            	rightHand.setRhythmProbability(data.getIntArrayExtra(MainActivity.RHYTHM_PROBABILITY));
             }
         }
     }

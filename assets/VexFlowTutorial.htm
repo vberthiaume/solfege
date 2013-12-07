@@ -7,7 +7,7 @@
   <!-- Support Sources -->
   <script src="./VexFlowTutorial_files/jquery.js"></script>
   <script src="./VexFlowTutorial_files/raphael.js"></script>
-  <script src="./VexFlowTutorial_files/buttonClicked.js"></script>
+  <script src="./VexFlowTutorial_files/solfegeJavaScript.js"></script>
 
   <style type="text/css">
     canvas {
@@ -52,6 +52,16 @@
          })
       })
     })
+    
+    stateEnum = {
+    	INITIAL 		: "Donnes moi une tonale!",
+    	GOT_ROOT 		: "Donnes moi une note à deviner!",
+    	GOT_GUESS_NOTE 	: "On recommence!"
+	}
+	
+	var currentState = stateEnum.INITIAL;
+	var rootArray, guessNoteArray;
+    
 	</script>
 </head>
 <body>
@@ -63,18 +73,18 @@
         <script>
 			var canvas = $("div.two div.a canvas")[0];
 			var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
-			
+		
 			var ctx = renderer.getContext();
-			
+		
 			var stave = new Vex.Flow.Stave(10, 0, 200);
 			stave.addClef("treble").setContext(ctx).draw();
+		
+			// var stave2 = new Vex.Flow.Stave(10, 75, 200);
+			// stave2.addClef("bass").setContext(ctx).draw();
 			
-			var stave2 = new Vex.Flow.Stave(10, 75, 200);
-			stave2.addClef("bass").setContext(ctx).draw();
-
         </script>
-        <input type="button" id ="myButton" onclick="buttonClicked()" value="add notation">
-  		<script "text/javascript">var javascriptVariable = "javascriptVariableContent";</script>
+        <input type="button" id ="myButton" onclick="htmlButtonClicked()" value="Donnes moi une tonale!">
+  		
       </p></div>
     </div>
   </div>

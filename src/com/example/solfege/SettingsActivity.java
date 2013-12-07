@@ -1,5 +1,6 @@
 package com.example.solfege;
 
+
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,6 +11,7 @@ public class SettingsActivity extends Activity {
 
 	private SeekBar[] seekBarDegrees = new SeekBar[7];
 	private SeekBar[] seekBarRhythms = new SeekBar[4];
+	private int m_degreeProb[], m_rhythmProb[];
 
 	@SuppressLint("NewApi")  //not sure we need this, but google tutorial says so
 	@Override
@@ -19,14 +21,14 @@ public class SettingsActivity extends Activity {
 		
 		//get the intent that was used to start this activity
 		Intent intent = getIntent();
-		int degreeProb[] = intent.getIntArrayExtra(MainActivity.DEGREE_PROBABILITY);
-		int rhythmProb[] = intent.getIntArrayExtra(MainActivity.RHYTHM_PROBABILITY);
+		m_degreeProb = intent.getIntArrayExtra(MainActivity.DEGREE_PROBABILITY);
+		m_rhythmProb = intent.getIntArrayExtra(MainActivity.RHYTHM_PROBABILITY);
 		
 		// initialize the seek bars for degree probability
-		initVerticalSeekBars(degreeProb, rhythmProb);
+		initVerticalSeekBars();
 	}
 	
-	private void initVerticalSeekBars(int degreeProb[], int rhythmProb[]) {
+	private void initVerticalSeekBars() {
 
 		seekBarDegrees[0] = (VerticalSeekBar) findViewById(R.id.seekBarFirstDeg);
 		seekBarDegrees[1] = (VerticalSeekBar) findViewById(R.id.seekBarSecondDeg);
@@ -42,15 +44,51 @@ public class SettingsActivity extends Activity {
 		seekBarRhythms[3] = (VerticalSeekBar) findViewById(R.id.seekBarFourthRhythm);
 
 		for (int iCurParam = 0; iCurParam < seekBarDegrees.length; ++iCurParam) {
-			seekBarDegrees[iCurParam].setProgress(degreeProb[iCurParam]);
+			seekBarDegrees[iCurParam].setProgress(m_degreeProb[iCurParam]);
 			seekBarDegrees[iCurParam].setOnSeekBarChangeListener(new OnVerticalSeekBarChangeListener());
 			
 			if (iCurParam < seekBarRhythms.length){
-				seekBarRhythms[iCurParam].setProgress(rhythmProb[iCurParam]);
+				seekBarRhythms[iCurParam].setProgress(m_rhythmProb[iCurParam]);
 				seekBarRhythms[iCurParam].setOnSeekBarChangeListener(new OnVerticalSeekBarChangeListener());
 			}
 		}
 	}
+	
+	private void getVerticalSeekBarProgress(){
+		for (int iCurParam = 0; iCurParam < seekBarDegrees.length; ++iCurParam) {
+			m_degreeProb[iCurParam] = seekBarDegrees[iCurParam].getProgress();
+			
+			if (iCurParam < seekBarRhythms.length){
+				m_rhythmProb[iCurParam] = seekBarRhythms[iCurParam].getProgress();
+
+			}
+		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		
+		Intent resultIntent = new Intent();
+		
+		getVerticalSeekBarProgress();
+		
+		resultIntent.putExtra(MainActivity.DEGREE_PROBABILITY, m_degreeProb);
+		resultIntent.putExtra(MainActivity.RHYTHM_PROBABILITY, m_rhythmProb);
+	
+		
+		//setResult(RESULT_OK, resultIntent);		
+		if (getParent() == null) {
+		    setResult(Activity.RESULT_OK, resultIntent);
+		}
+		else {
+		    getParent().setResult(Activity.RESULT_OK, resultIntent);
+		}
+		
+		
+
+	}
+	
 	
 //  //default method, used for handling things if we have an action bar	
 //	@Override

@@ -1,5 +1,7 @@
 package com.example.solfege;
 
+import java.util.Random;
+
 public class RightHand {
 
 	private int veloout;
@@ -8,6 +10,10 @@ public class RightHand {
 	private int[][] gammes;
 	private int tempo;
 	private String mode;
+	
+	private String m_currentRoot;
+	private String m_currentGuessNote;
+	
 
 	// TODO faire en sorte que ce tableau soit setté par sept curseurs sur
 	// l'interface (valeurs entre 0 et 10)
@@ -32,6 +38,20 @@ public class RightHand {
 		hauteur = 48;
 		gammes = init_gammes();
 
+	}
+	
+	//return a random note as a root
+	public String getRoot(){
+		Random rand = new Random();
+		m_currentRoot = notes[rand.nextInt(notes.length)+1] + "/4";
+		return m_currentRoot;
+	}
+	
+	//return a random note as a guess note
+	public String getGuessNote(){
+		Random rand = new Random();
+		m_currentGuessNote = notes[rand.nextInt(notes.length)+1] + "/4";
+		return m_currentGuessNote;
 	}
 
 	/**
