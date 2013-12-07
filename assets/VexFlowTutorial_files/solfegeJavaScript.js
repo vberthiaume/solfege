@@ -116,6 +116,9 @@ function reset(){
 	currentState = stateEnum.INITIAL;
 	document.getElementById('myButton').value = currentState;
 	
+	//reset notes in righthand
+	righthand.resetNotes();
+	
 }
 
 

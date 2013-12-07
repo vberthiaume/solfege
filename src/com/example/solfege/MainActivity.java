@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
 	private PdUiDispatcher dispatcher;
 	private RightHand rightHand;
 	private LeftHand leftHand;
+	private Thread thread;    
 	
 
 
@@ -59,10 +60,9 @@ public class MainActivity extends Activity {
 	}
 	
 
-	private void triggerNote(int n) {
-		PdBase.sendFloat("midinote", n);
-		PdBase.sendBang("trigger");
-	}
+
+	
+	
 
 	private void initPd() throws IOException {
 		// Configure the audio glue
@@ -76,8 +76,8 @@ public class MainActivity extends Activity {
 
 	private void loadPatch() throws IOException {
 		File dir = getFilesDir();
-//		IoUtils.extractZipResource(getResources().openRawResource(R.raw.tuner), dir, true);
-		File patchFile = new File(dir, "tuner.pd");
+		IoUtils.extractZipResource(getResources().openRawResource(R.raw.tuna), dir, true);
+		File patchFile = new File(dir, "tuna.pd");
 		int val = PdBase.openPatch(patchFile.getAbsolutePath());
 	}
 
@@ -89,10 +89,20 @@ public class MainActivity extends Activity {
 	}
 
 	public void onPlayButtonClick(View view) {
+		
+		int curRootNote = rightHand.getCurrentMidiRootNote();
+		if (curRootNote!= -1){
+			PdBase.sendFloat("midinote1", curRootNote);
+			PdBase.sendBang("rootTrigger");			
+		}
+		
+		int curGuessNote = rightHand.getCurrentMidiGuessNote();
+		if (curGuessNote != -1){
+			PdBase.sendFloat("midinote2", curGuessNote);
+			PdBase.sendBang("guessTrigger");
+		}
 
-		// MainGauche mainGauche = new MainGauche();
-		// String strAccord = mainGauche.genereAccordAbc(1);
-		triggerNote(99); // E is MIDI note 40.
+		
 	}
 	
 	public void onSettingsButtonClick(View view) {

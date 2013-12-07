@@ -41,6 +41,21 @@ public class RightHand {
 	}
 	
 	/**
+	 * return the midi note for the given abcNote and octave, or -1 if abcNote is not found
+	 * @param abcNote
+	 * @param octave
+	 * @return
+	 */
+	private int abcToMidi(String abcNote, int octave) {
+		for (int iCurNote = 0; iCurNote < notes.length; ++iCurNote){
+			if (abcNote.equals(notes[iCurNote])){
+				return 12 * (octave + 1) + iCurNote;
+			}
+		}
+		return -1;
+	}
+	
+	/**
 	 * create and return a new random note as a root
 	 * @return
 	 */
@@ -61,19 +76,28 @@ public class RightHand {
 	}
 	
 	/**
-	 * create and return a new random note as a root
+	 * create and return the current 
 	 * @return
 	 */
-	public String getCurrentRootNote(){
-		return m_currentRoot;
+	public int getCurrentMidiRootNote(){
+		if (m_currentRoot == null || m_currentRoot == ""){
+			return -1;
+		} else {
+			return abcToMidi (m_currentRoot.substring(0, m_currentRoot.length()-2), 4);
+		}
 	}
+	
 	
 	/**
 	 * return the current guessNote
 	 * @return
 	 */
-	public String getGuessNote(){
-		return m_currentGuessNote;
+	public int getCurrentMidiGuessNote(){
+		if (m_currentGuessNote == null || m_currentGuessNote == ""){
+			return -1;
+		} else {
+			return abcToMidi (m_currentGuessNote.substring(0, m_currentGuessNote.length()-2), 4);
+		}
 	}
 	
 	
