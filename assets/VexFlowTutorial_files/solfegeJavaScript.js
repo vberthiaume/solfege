@@ -23,7 +23,7 @@ function htmlButtonClicked(){
 function createRoot(){
 
 	//generate random chord from mainGauche
-	var root = righthand.getRoot();
+	var root = righthand.getNewRootNote();
 
 	//get that root in array form, splitting on spaces
 	rootArray = root.split(" ");
@@ -61,7 +61,7 @@ function createRoot(){
 function createGuessNote(){
 
 	//generate random chord from mainGauche
-	var guessNote = righthand.getGuessNote();
+	var guessNote = righthand.getNewGuessNote();
 
 	//get that root in array form, splitting on spaces
 	guessNoteArray = guessNote.split(" ");

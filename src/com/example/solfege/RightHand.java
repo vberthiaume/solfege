@@ -40,18 +40,50 @@ public class RightHand {
 
 	}
 	
-	//return a random note as a root
-	public String getRoot(){
+	/**
+	 * create and return a new random note as a root
+	 * @return
+	 */
+	public String getNewRootNote(){
 		Random rand = new Random();
 		m_currentRoot = notes[rand.nextInt(notes.length)+1] + "/4";
 		return m_currentRoot;
 	}
 	
-	//return a random note as a guess note
-	public String getGuessNote(){
+	/**
+	 * create and return a new random note as a guess note
+	 * @return
+	 */
+	public String getNewGuessNote(){
 		Random rand = new Random();
 		m_currentGuessNote = notes[rand.nextInt(notes.length)+1] + "/4";
 		return m_currentGuessNote;
+	}
+	
+	/**
+	 * create and return a new random note as a root
+	 * @return
+	 */
+	public String getCurrentRootNote(){
+		return m_currentRoot;
+	}
+	
+	/**
+	 * return the current guessNote
+	 * @return
+	 */
+	public String getGuessNote(){
+		return m_currentGuessNote;
+	}
+	
+	
+	
+	/**
+	 * reset both the root and guess note to "" 
+	 */
+	public void resetNotes(){
+		m_currentRoot = "";
+		m_currentGuessNote = "";
 	}
 
 	/**
