@@ -22,17 +22,13 @@ function htmlButtonClicked(){
 //this function creates and adds a root note to the stave
 function createRoot(){
 
-	
-	document.getElementById('myButton').value = "rootArray";
-	
-	
 	//generate random chord from mainGauche
 	var root = righthand.getRoot();
 
 	//get that root in array form, splitting on spaces
 	rootArray = root.split(" ");
 	
-	
+	//document.getElementById('myButton').value = "rootArray";
 	
 	// Create the notes
 	var notes = [
@@ -70,7 +66,7 @@ function createGuessNote(){
 	//get that root in array form, splitting on spaces
 	guessNoteArray = guessNote.split(" ");
 	
-	document.getElementById('myButton').value = "guessNoteArray";
+	//document.getElementById('myButton').value = "guessNoteArray";
 	
 	// Create the notes
 	var notes = [
@@ -100,53 +96,19 @@ function createGuessNote(){
 	document.getElementById('myButton').value = currentState;
 }
 
-//function createGuessNote(){
-//
-//	
-//	//generate random chord from mainGauche
-//	guessNote = righthand.getGuessNote();
-//
-//	document.getElementById('myButton').value = root;
-//	
-//	//get that root in array form, splitting on spaces
-//	var guessNoteArray = [root, guessNote];
-//	
-//	document.getElementById('myButton').value = guessNoteArray;
-//	
-//	// Create the notes
-//	var notes = [
-//	  new Vex.Flow.StaveNote({ keys: guessNoteArray, duration: "w" })
-//	];
-//	
-//	// Create a voice in 4/4
-//	var voice = new Vex.Flow.Voice({
-//	  num_beats: 4,
-//	  beat_value: 4,
-//	  resolution: Vex.Flow.RESOLUTION
-//	});
-//	
-//	// Add notes to voice
-//	voice.addTickables(notes);
-//	
-//	// Format and justify the notes to 200 pixels
-//	var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 200);
-//	
-//	// Render voice... this is weird because the staves are defined in another file, in vexFlowTutorial...
-//	voice.draw(ctx, stave);
-//	//voice.draw(ctx, stave2);
-//	
-//	//update current state and button
-//	currentState = stateEnum.GOT_GUESS_NOTE;
-//	document.getElementById('myButton').value = currentState;
-//}
 
 function reset(){
 	
+	//clear the canvas
+	canvas = document.getElementById('vexFlowCanvas');
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+	
+    
+    //start over
 	canvas = $("div.two div.a canvas")[0];
-	renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
-
 	ctx = renderer.getContext();
-
+		
 	stave = new Vex.Flow.Stave(10, 0, 200);
 	stave.addClef("treble").setContext(ctx).draw();
 	
