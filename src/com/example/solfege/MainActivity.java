@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 		// load the notation view
 		WebView notationWebView = (WebView) findViewById(R.id.partitionHtml);
 		notationWebView.getSettings().setJavaScriptEnabled(true);
-		notationWebView.loadUrl("file:///android_asset/VexFlowTutorial.htm");
+		notationWebView.loadUrl("file:///android_asset/solfegeHtmlView.htm");
 		notationWebView.addJavascriptInterface(leftHand, "lefthand");
 		notationWebView.addJavascriptInterface(rightHand, "righthand");
 
