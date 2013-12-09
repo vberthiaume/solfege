@@ -45,7 +45,7 @@
 			            android:layout_weight="1"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarFirstDeg"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -72,7 +72,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarSecondDeg"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -98,7 +98,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarThirdDeg"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -124,7 +124,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarFourthDeg"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -150,7 +150,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarFifthDeg"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -176,7 +176,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarSixthDeg"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -202,7 +202,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarSeventhDeg"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -264,7 +264,7 @@
 			            android:layout_weight="1"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar 
+			            <com.solfege.solfege.VerticalSeekBar 
 			                android:id="@+id/seekBarFirstRhythm"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -291,7 +291,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarSecondRhythm"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -317,7 +317,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarThirdRhythm"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"
@@ -343,7 +343,7 @@
 			            android:layout_height="match_parent"
 			            android:orientation="vertical" >
 
-			            <com.example.solfege.VerticalSeekBar
+			            <com.solfege.solfege.VerticalSeekBar
 			                android:id="@+id/seekBarFourthRhythm"
 			                android:layout_width="wrap_content"
 			                android:layout_height="0dp"

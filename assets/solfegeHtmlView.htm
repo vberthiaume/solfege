@@ -61,17 +61,22 @@
 	
 	var currentState = stateEnum.INITIAL;
 	var rootArray, guessNoteArray;
-    
+	
+	var webViewHeight = righthand.getScreenHeight();
+	var webViewWidth = righthand.getScreenWidth();  
+	    
 	</script>
 </head>
 <body>
   <div class="content">
     <div class="description two">
       <div class="example a" example="a">
-        <canvas id="vexFlowCanvas" width="200" height="200"></canvas>
+        <canvas id="vexFlowCanvas"></canvas>
         <p>
         <script>
 			var canvas = $("div.two div.a canvas")[0];
+			canvas.width  = webViewWidth;
+			canvas.height  = webViewHeight;
 			var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
 		
 			var ctx = renderer.getContext();
@@ -83,7 +88,11 @@
 			// stave2.addClef("bass").setContext(ctx).draw();
 			
         </script>
-        <input type="button" id ="myButton" onclick="htmlButtonClicked()" value="Donnes moi une tonale!">
+        <input type="button" id ="myButton" onclick="htmlButtonClicked()" value="Donnes moi une tonale!" style= "width: 100%;">
+        <script>
+				
+				
+		</script>
   		
       </p></div>
     </div>

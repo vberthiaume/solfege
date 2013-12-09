@@ -1,4 +1,4 @@
-package com.example.solfege;
+package com.solfege.solfege;
 
 
 import java.util.Random;

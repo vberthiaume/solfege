@@ -1,4 +1,4 @@
-package com.example.solfege;
+package com.solfege.solfege;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,17 +8,16 @@ import org.puredata.android.io.PdAudio;
 import org.puredata.android.utils.PdUiDispatcher;
 import org.puredata.core.PdBase;
 import org.puredata.core.utils.IoUtils;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.EditText;
-import android.widget.SeekBar;
+
 
 public class MainActivity extends Activity {
 	
@@ -29,7 +28,7 @@ public class MainActivity extends Activity {
 	private PdUiDispatcher dispatcher;
 	private RightHand rightHand;
 	private LeftHand leftHand;
-	private Thread thread;    
+	   
 	
 
 
@@ -44,10 +43,23 @@ public class MainActivity extends Activity {
 		
 		// load the notation view
 		WebView notationWebView = (WebView) findViewById(R.id.partitionHtml);
+
+		//this is terrible, but unsure how else to get screen dimensions into the html canvas		
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);	//this requires API 13 minimum
+		rightHand.setScreenSize (size.y, size.x);
+
+		
 		notationWebView.getSettings().setJavaScriptEnabled(true);
 		notationWebView.loadUrl("file:///android_asset/solfegeHtmlView.htm");
 		notationWebView.addJavascriptInterface(leftHand, "lefthand");
 		notationWebView.addJavascriptInterface(rightHand, "righthand");
+		
+
+		
+		
+		
 
 		//Initialize PD path
 		try {

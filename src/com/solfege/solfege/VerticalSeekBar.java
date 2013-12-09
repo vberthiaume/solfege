@@ -1,4 +1,4 @@
-package com.example.solfege;
+package com.solfege.solfege;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,4 +1,4 @@
-package com.example.solfege;
+package com.solfege.solfege;
 
 import java.util.Random;
 
@@ -13,6 +13,9 @@ public class RightHand {
 	
 	private String m_currentRoot;
 	private String m_currentGuessNote;
+	
+	private int m_webViewHeight;
+	private int m_webViewWidth;
 	
 
 	// TODO faire en sorte que ce tableau soit setté par sept curseurs sur
@@ -100,6 +103,18 @@ public class RightHand {
 		}
 	}
 	
+	public void setScreenSize (int p_Height, int p_Width){
+		m_webViewHeight = p_Height;
+		m_webViewWidth = p_Width;
+	}
+
+	public int getScreenHeight(){
+		return m_webViewHeight/2 - 150;
+	}
+	
+	public int getScreenWidth(){
+		return m_webViewWidth/2;
+	}
 	
 	
 	/**

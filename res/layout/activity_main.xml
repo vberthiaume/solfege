@@ -23,10 +23,11 @@
         android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/partitionHtml"
         android:layout_alignParentBottom="true"
-        android:text="@string/playButton"
-        android:onClick ="onPlayButtonClick" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onPlayButtonClick"
+        android:text="@string/playButton" />
+
 <!-- 
     <Button
         android:id="@+id/settingsButton"
