@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.solfege.solfege"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0"
+    android:anyDensity ="false"  >
 
     <uses-sdk
         android:minSdkVersion="13"
@@ -12,7 +13,8 @@
         android:allowBackup="true"
         android:icon="@drawable/solfege_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:anyDensity ="false" >
         <activity
             android:name="com.solfege.solfege.MainActivity"
             android:label="@string/app_name" >

@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  
-  <!-- VexFlow Compiled Source -->
-  <script src="./solfegeHtmlView_files/vexflow-min.js"></script><style type="text/css"></style>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-  <!-- Support Sources -->
-  <script src="./solfegeHtmlView_files/jquery.js"></script>
-  <script src="./solfegeHtmlView_files/raphael.js"></script>
-  <script src="./solfegeHtmlView_files/solfegeJavaScript.js"></script>
+<!-- VexFlow Compiled Source -->
+<script src="./solfegeHtmlView_files/vexflow-min.js"></script>
+<style type="text/css"></style>
 
-  <style type="text/css">
-    canvas {
-      background: #eed;
-      padding: 10px;
-      border: 10px solid #ddc;
-    }
+<!-- Support Sources -->
+<script src="./solfegeHtmlView_files/jquery.js"></script>
+<script src="./solfegeHtmlView_files/raphael.js"></script>
+<script src="./solfegeHtmlView_files/solfegeJavaScript.js"></script>
 
-    div.egcode {
-      font-family: Courier;
-      font-size: 14px;
-    }
-  </style>
+<style type="text/css">
+canvas {
+	background: #eed;
+	padding: 10px;
+	border: 10px solid #ddc;
+}
 
-  <script>
+div.egcode {
+	font-family: Courier;
+	font-size: 14px;
+}
+</style>
+
+<script>
     // Take raw javascript code, and return moderately useful HTML
     function prettify_code(code) {
       var lines = code.split(/\r\n|\n|\r/);
@@ -54,47 +57,45 @@
     })
     
     stateEnum = {
-    	INITIAL 		: "Donnes moi une tonale!",
-    	GOT_ROOT 		: "Donnes moi une note à deviner!",
-    	GOT_GUESS_NOTE 	: "On recommence!"
+    	INITIAL 		: "Give me a root note!",
+    	GOT_ROOT 		: "Give me a note to guess!",
+    	GOT_GUESS_NOTE 	: "Let's start over!"
 	}
 	
 	var currentState = stateEnum.INITIAL;
 	var rootArray, guessNoteArray;
-	
-	var webViewHeight = righthand.getScreenHeight();
-	var webViewWidth = righthand.getScreenWidth();  
+
 	    
 	</script>
 </head>
 <body>
-  <div class="content">
-    <div class="description two">
-      <div class="example a" example="a">
-        <canvas id="vexFlowCanvas"></canvas>
-        <p>
-        <script>
-			var canvas = $("div.two div.a canvas")[0];
-			canvas.width  = webViewWidth;
-			canvas.height  = webViewHeight;
-			var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
-		
-			var ctx = renderer.getContext();
-		
-			var stave = new Vex.Flow.Stave(10, 0, 200);
-			stave.addClef("treble").setContext(ctx).draw();
-		
-			// var stave2 = new Vex.Flow.Stave(10, 75, 200);
-			// stave2.addClef("bass").setContext(ctx).draw();
+	<div class="content">
+		<!-- <canvas id="vexFlowCanvas" style="width: 90%;"></canvas> -->
+		<canvas id="vexFlowCanvas" style="width: 90%;"></canvas>
+		<script>
+	        try{
+
+				var canvas = document.getElementById('vexFlowCanvas');
+				
+				//no longer used but keep for reference sake
+				//var webViewHeight = righthand.getScreenHeight();
+				//var webViewWidth = righthand.getScreenWidth();  
+				//canvas.width  = webViewWidth;
+				//canvas.height  = webViewHeight;
+				
+				var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
+				var ctx = renderer.getContext();
+				var stave = new Vex.Flow.Stave(0, 0, canvas.width-10);
+				stave.addClef("treble").setContext(ctx).draw();
 			
+				// var stave2 = new Vex.Flow.Stave(10, 75, 200);
+				// stave2.addClef("bass").setContext(ctx).draw();
+			} catch (e) {
+				console.log("error: " + e);
+				alert("error: " + e);  
+			}
         </script>
-        <input type="button" id ="myButton" onclick="htmlButtonClicked()" value="Donnes moi une tonale!" style= "width: 100%;">
-        <script>
-				
-				
-		</script>
-  		
-      </p></div>
-    </div>
-  </div>
+		<input type="button" id="myButton" onclick="htmlButtonClicked()" value="Give me a root note!" style="width: 100%;">
+
+	</div>
 </body></html>

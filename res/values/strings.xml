@@ -7,7 +7,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="Staff_desc">Staff</string>
     <string name="remplirBouton1">1 2 3 maj</string>
-    <string name="playButton">Lecture</string>
+    <string name="playButton">Play</string>
     <string name="settingsButton">Paramètres</string>
     <string name="title_activity_settings">Solfege - Paramètres]</string>
     <string name="noteProbLabel">Probabilité de lecture des degrés</string>

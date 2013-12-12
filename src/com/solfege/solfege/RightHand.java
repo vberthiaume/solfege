@@ -2,6 +2,8 @@ package com.solfege.solfege;
 
 import java.util.Random;
 
+import android.webkit.JavascriptInterface;
+
 public class RightHand {
 
 	private int veloout;
@@ -22,10 +24,12 @@ public class RightHand {
 	// l'interface (valeurs entre 0 et 10)
 	private int[] degreeProbability = { 4, 3, 4, 5, 7, 4, 3 };
 
+	@JavascriptInterface
 	public int[] getDegreeProbability() {
 		return degreeProbability;
 	}
 
+	@JavascriptInterface
 	public void setDegreeProbability(int[] p_DegreeProbability) {
 		this.degreeProbability = p_DegreeProbability;
 	}
@@ -62,6 +66,7 @@ public class RightHand {
 	 * create and return a new random note as a root
 	 * @return
 	 */
+	@JavascriptInterface
 	public String getNewRootNote(){
 		Random rand = new Random();
 		m_currentRoot = notes[rand.nextInt(notes.length)+1] + "/4";
@@ -72,6 +77,7 @@ public class RightHand {
 	 * create and return a new random note as a guess note
 	 * @return
 	 */
+	@JavascriptInterface
 	public String getNewGuessNote(){
 		Random rand = new Random();
 		m_currentGuessNote = notes[rand.nextInt(notes.length)+1] + "/4";
@@ -82,6 +88,7 @@ public class RightHand {
 	 * create and return the current 
 	 * @return
 	 */
+	@JavascriptInterface
 	public int getCurrentMidiRootNote(){
 		if (m_currentRoot == null || m_currentRoot == ""){
 			return -1;
@@ -95,6 +102,7 @@ public class RightHand {
 	 * return the current guessNote
 	 * @return
 	 */
+	@JavascriptInterface
 	public int getCurrentMidiGuessNote(){
 		if (m_currentGuessNote == null || m_currentGuessNote == ""){
 			return -1;
@@ -103,23 +111,26 @@ public class RightHand {
 		}
 	}
 	
-	public void setScreenSize (int p_Height, int p_Width){
+	public void setWebViewSize (int p_Height, int p_Width){
 		m_webViewHeight = p_Height;
 		m_webViewWidth = p_Width;
 	}
 
+	@JavascriptInterface
 	public int getScreenHeight(){
-		return m_webViewHeight/2 - 150;
+		return m_webViewHeight;
 	}
 	
+	@JavascriptInterface
 	public int getScreenWidth(){
-		return m_webViewWidth/2;
+		return m_webViewWidth;
 	}
 	
 	
 	/**
 	 * reset both the root and guess note to "" 
 	 */
+	@JavascriptInterface
 	public void resetNotes(){
 		m_currentRoot = "";
 		m_currentGuessNote = "";
@@ -131,6 +142,7 @@ public class RightHand {
 	 * @param degre
 	 * @return String au format VEXTAB
 	 */
+	@JavascriptInterface
 	public String genereAccordAbc(int degre) {
 
 		String temp, temp2;
@@ -156,7 +168,7 @@ public class RightHand {
 
 	}// droite
 
-	String rythmes(int max_division, String temp, int init) {
+	private String rythmes(int max_division, String temp, int init) {
 
 		String buffer = new String("");
 		int test;
@@ -207,7 +219,7 @@ public class RightHand {
 		return temp;
 	}// rythmes
 
-	String rythmes_min(int max_division, String temp, int init) {
+	private String rythmes_min(int max_division, String temp, int init) {
 
 		String buffer;
 		int test;
@@ -262,7 +274,7 @@ public class RightHand {
 	 * @param proba
 	 * @return -1 ou 1
 	 */
-	int plussz_decide_rest(int proba) {
+	private int plussz_decide_rest(int proba) {
 		int rest = (int) Math.random() * proba;
 
 		if (rest == 0) {
@@ -279,7 +291,7 @@ public class RightHand {
 	 * @param int degre
 	 * @return int midi
 	 */
-	int degre2midi(int degre) {
+	private int degre2midi(int degre) {
 
 		if (mode.equals("maj")) {
 			switch (degre) {
@@ -328,7 +340,7 @@ public class RightHand {
 	 * @param table
 	 * @return int
 	 */
-	int cherche_table(int[] table) {
+	private int cherche_table(int[] table) {
 
 		int i, size = table.length, sum = 0, rand_nb = 0, temp = 0, indice = 0;
 
@@ -360,7 +372,7 @@ public class RightHand {
 	 * 
 	 * @return tableau à deux dimentions contenant les différentes gammes
 	 */
-	int[][] init_gammes() {
+	private int[][] init_gammes() {
 
 		int i, j;
 
@@ -434,27 +446,33 @@ public class RightHand {
 		return gammesinit;
 	}
 
+	@JavascriptInterface
 	protected void setVeloout(int veloout) {
 		this.veloout = veloout;
 	}
 
+	@JavascriptInterface
 	protected void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
 
+	@JavascriptInterface
 	protected void setTempo(int val) {
 
 		this.tempo = val;
 	}
 
+	@JavascriptInterface
 	protected void setMode(String val) {
 		this.mode = val;
 	}
 
+	@JavascriptInterface
 	public int[] getRhythmProbability() {
 		return rhythmProbability;
 	}
 
+	@JavascriptInterface
 	public void setRhythmProbability(int[] rhythmProbability) {
 		this.rhythmProbability = rhythmProbability;
 	}
