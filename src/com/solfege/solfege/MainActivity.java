@@ -63,10 +63,6 @@ public class MainActivity extends Activity {
 		notationWebView.addJavascriptInterface(leftHand, "lefthand");
 		notationWebView.addJavascriptInterface(rightHand, "righthand");
 		
-		
-		
-		
-		
 
 		//Initialize PD path
 		try {
