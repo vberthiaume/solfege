@@ -25,7 +25,7 @@ function htmlButtonClicked(){
 //this function creates and adds a root note to the stave
 function createRoot(){
 	try{
-		//generate random chord from mainGauche
+		//generate random root note
 		var root = righthand.getNewRootNote();
 	
 		//get that root in array form, splitting on spaces
@@ -68,7 +68,7 @@ function createRoot(){
 function createGuessNote(){
 	
 	try{
-		//generate random chord from mainGauche
+		//generate random guess note
 		var guessNote = righthand.getNewGuessNote();
 	
 		//get that root in array form, splitting on spaces
@@ -127,7 +127,7 @@ function reset(){
 		currentState = stateEnum.INITIAL;
 		document.getElementById('myButton').value = currentState;
 		
-		//reset notes in righthand
+		//reset notes
 		righthand.resetNotes();
 	
 	} catch (e) {

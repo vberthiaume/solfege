@@ -49,32 +49,6 @@ public class MainActivity extends Activity {
 		
 		WebView notationWebView = (WebView) findViewById(R.id.partitionHtml);
 
-		//this is terrible, but unsure how else to get screen dimensions into the html canvas		
-//SOLUTION 1
-//		Display display = getWindowManager().getDefaultDisplay();
-//		Point size = new Point();
-//		display.getSize(size);	//this requires API 13 minimum
-//		rightHand.setWebViewSize (size.y, size.x);
-// SOLUTION 2		
-//		DisplayMetrics dm = new DisplayMetrics();
-//		getWindowManager().getDefaultDisplay().getMetrics(dm);
-//		int widthPix = (int) Math.ceil(dm.widthPixels * dm.scaledDensity);
-//		int heightPix = (int) Math.ceil(dm.heightPixels * dm.scaledDensity);
-//		rightHand.setWebViewSize (widthPix, heightPix);
-		
-// SOLUTION 3		
-//		DisplayMetrics dm = new DisplayMetrics();
-//		getWindowManager().getDefaultDisplay().getMetrics(dm);
-
- 
-//		Button button = (Button) findViewById(R.id.playButton); 		//button size is not available because button not created yet?
-//		int playButtonHeight = button.getHeight();
-//		
-//		int widthPix =  (int) (dm.widthPixels / dm.scaledDensity);
-//		int heightPix = (int) (dm.heightPixels / dm.scaledDensity);
-//		
-//		rightHand.setWebViewSize (widthPix , heightPix - playButtonHeight);		
-		
 
 		notationWebView.getSettings().setJavaScriptEnabled(true);
 		notationWebView.setWebChromeClient(new WebChromeClient() {

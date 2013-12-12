@@ -24,12 +24,12 @@ public class RightHand {
 	// l'interface (valeurs entre 0 et 10)
 	private int[] degreeProbability = { 4, 3, 4, 5, 7, 4, 3 };
 
-	@JavascriptInterface
+	
 	public int[] getDegreeProbability() {
 		return degreeProbability;
 	}
 
-	@JavascriptInterface
+	
 	public void setDegreeProbability(int[] p_DegreeProbability) {
 		this.degreeProbability = p_DegreeProbability;
 	}
@@ -85,10 +85,18 @@ public class RightHand {
 	}
 	
 	/**
-	 * create and return the current 
-	 * @return
+	 * reset both the root and guess note to "" 
 	 */
 	@JavascriptInterface
+	public void resetNotes(){
+		m_currentRoot = "";
+		m_currentGuessNote = "";
+	}
+
+	/**
+	 * create and return the current root note
+	 * @return
+	 */
 	public int getCurrentMidiRootNote(){
 		if (m_currentRoot == null || m_currentRoot == ""){
 			return -1;
@@ -102,7 +110,6 @@ public class RightHand {
 	 * return the current guessNote
 	 * @return
 	 */
-	@JavascriptInterface
 	public int getCurrentMidiGuessNote(){
 		if (m_currentGuessNote == null || m_currentGuessNote == ""){
 			return -1;
@@ -111,30 +118,7 @@ public class RightHand {
 		}
 	}
 	
-	public void setWebViewSize (int p_Height, int p_Width){
-		m_webViewHeight = p_Height;
-		m_webViewWidth = p_Width;
-	}
-
-	@JavascriptInterface
-	public int getScreenHeight(){
-		return m_webViewHeight;
-	}
 	
-	@JavascriptInterface
-	public int getScreenWidth(){
-		return m_webViewWidth;
-	}
-	
-	
-	/**
-	 * reset both the root and guess note to "" 
-	 */
-	@JavascriptInterface
-	public void resetNotes(){
-		m_currentRoot = "";
-		m_currentGuessNote = "";
-	}
 
 	/**
 	 * Prends un degré en entrée et renvoie les notes de la main droite
@@ -142,7 +126,6 @@ public class RightHand {
 	 * @param degre
 	 * @return String au format VEXTAB
 	 */
-	@JavascriptInterface
 	public String genereAccordAbc(int degre) {
 
 		String temp, temp2;
@@ -446,33 +429,33 @@ public class RightHand {
 		return gammesinit;
 	}
 
-	@JavascriptInterface
+	
 	protected void setVeloout(int veloout) {
 		this.veloout = veloout;
 	}
 
-	@JavascriptInterface
+	
 	protected void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
 
-	@JavascriptInterface
+	
 	protected void setTempo(int val) {
 
 		this.tempo = val;
 	}
 
-	@JavascriptInterface
+	
 	protected void setMode(String val) {
 		this.mode = val;
 	}
 
-	@JavascriptInterface
+	
 	public int[] getRhythmProbability() {
 		return rhythmProbability;
 	}
 
-	@JavascriptInterface
+	
 	public void setRhythmProbability(int[] rhythmProbability) {
 		this.rhythmProbability = rhythmProbability;
 	}

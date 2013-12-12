@@ -77,12 +77,6 @@ div.egcode {
 
 				var canvas = document.getElementById('vexFlowCanvas');
 				
-				//no longer used but keep for reference sake
-				//var webViewHeight = righthand.getScreenHeight();
-				//var webViewWidth = righthand.getScreenWidth();  
-				//canvas.width  = webViewWidth;
-				//canvas.height  = webViewHeight;
-				
 				var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
 				var ctx = renderer.getContext();
 				var stave = new Vex.Flow.Stave(0, 0, canvas.width-10);
