@@ -86,8 +86,10 @@ public class MainActivity extends Activity {
 
 	private void loadPatch() throws IOException {
 		File dir = getFilesDir();
-		IoUtils.extractZipResource(getResources().openRawResource(R.raw.tuna), dir, true);
-		File patchFile = new File(dir, "tuna.pd");
+//		IoUtils.extractZipResource(getResources().openRawResource(R.raw.no_toggle), dir, true);
+//		File patchFile = new File(dir, "solfege.pd");
+		IoUtils.extractZipResource(getResources().openRawResource(R.raw.toggle), dir, true);
+		File patchFile = new File(dir, "solfege.pd");
 		int val = PdBase.openPatch(patchFile.getAbsolutePath());
 	}
 
