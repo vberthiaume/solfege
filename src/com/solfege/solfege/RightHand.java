@@ -38,6 +38,7 @@ public class RightHand {
 	private int[] rhythmProbability = { 0, 1, 4, 0 };
 	
 	private static final String[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "B#" };
+	private static final String[] notes_C_Scale = { "C", "D", "E", "F", "G", "A", "B"};
 
 	public RightHand() {
 
@@ -54,8 +55,8 @@ public class RightHand {
 	 * @return
 	 */
 	private int abcToMidi(String abcNote, int octave) {
-		for (int iCurNote = 0; iCurNote < notes.length; ++iCurNote){
-			if (abcNote.equals(notes[iCurNote])){
+		for (int iCurNote = 0; iCurNote < notes_C_Scale.length; ++iCurNote){
+			if (abcNote.equals(notes_C_Scale[iCurNote])){
 				return 12 * (octave + 1) + iCurNote;
 			}
 		}
@@ -69,7 +70,7 @@ public class RightHand {
 	@JavascriptInterface
 	public String getNewRootNote(){
 		Random rand = new Random();
-		m_currentRoot = notes[rand.nextInt(notes.length)+1] + "/4";
+		m_currentRoot = notes_C_Scale[rand.nextInt(notes_C_Scale.length)] + "/4";
 		return m_currentRoot;
 	}
 	
@@ -80,7 +81,7 @@ public class RightHand {
 	@JavascriptInterface
 	public String getNewGuessNote(){
 		Random rand = new Random();
-		m_currentGuessNote = notes[rand.nextInt(notes.length)+1] + "/4";
+		m_currentGuessNote = notes_C_Scale[rand.nextInt(notes_C_Scale.length)] + "/4";
 		return m_currentGuessNote;
 	}
 	
