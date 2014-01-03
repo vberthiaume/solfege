@@ -38,7 +38,8 @@ public class RightHand {
 	private int[] rhythmProbability = { 0, 1, 4, 0 };
 	
 	private static final String[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "B#" };
-	private static final String[] notes_C_Scale = { "C", "D", "E", "F", "G", "A", "B"};
+	//private static final String[] notes_C_Scale = { "C", "D", "E", "F", "G", "A", "B"};
+	private static final String[] notes_C_Scale = { "C", "C", "D", "D", "E", "F", "F", "G", "G", "A", "A", "B", "B" };
 
 	public RightHand() {
 
