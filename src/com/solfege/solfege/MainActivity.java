@@ -8,13 +8,14 @@ import org.puredata.android.io.PdAudio;
 import org.puredata.android.utils.PdUiDispatcher;
 import org.puredata.core.PdBase;
 import org.puredata.core.utils.IoUtils;
+
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Point;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.os.Environment;
 import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.ConsoleMessage;
@@ -25,13 +26,21 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 	
-	private static final String TAG = "Solfege";
+	private static final String LOG_TAG = "Solfege";
 	static final int SET_PROBABILITY_SETTINGS = 1;
 	public final static String DEGREE_PROBABILITY = "com.example.solfege.DEGREE_PROBABILITY";
 	public final static String RHYTHM_PROBABILITY = "com.example.solfege.RHYTHM_PROBABILITY";
 	private PdUiDispatcher dispatcher;
 	private RightHand rightHand;
 	private LeftHand leftHand;
+	private WebView notationWebView;
+	
+	//for recording and playing sounds
+	private MediaRecorder mRecorder = null;
+	private MediaPlayer   mPlayer = null;
+	private static String mFileName = null;
+	boolean mStartRecording = true;
+	boolean mStartPlaying = true;
 	   
 	
 
@@ -46,32 +55,33 @@ public class MainActivity extends Activity {
 		leftHand = new LeftHand();
 		
 		// load the notation view
-		
-		WebView notationWebView = (WebView) findViewById(R.id.partitionHtml);
-
-
-		notationWebView.getSettings().setJavaScriptEnabled(true);
-		notationWebView.setWebChromeClient(new WebChromeClient() {
-			  public boolean onConsoleMessage(ConsoleMessage cm) {
-			    Log.e("Solfege", cm.message() + " -- From line " + cm.lineNumber() + " of " + cm.sourceId() );
-			    return true;
-			  }
-			});
-		
-		
+		notationWebView = (WebView) findViewById(R.id.partitionHtml);
 		notationWebView.loadUrl("file:///android_asset/solfegeHtmlView.htm");
+		
+		//enable javascript
+		notationWebView.getSettings().setJavaScriptEnabled(true);
 		notationWebView.addJavascriptInterface(leftHand, "lefthand");
 		notationWebView.addJavascriptInterface(rightHand, "righthand");
 		
+		notationWebView.setWebChromeClient(new WebChromeClient() {
+			  public boolean onConsoleMessage(ConsoleMessage cm) {
+			    Log.e(LOG_TAG, cm.message() + " -- From line " + cm.lineNumber() + " of " + cm.sourceId() );
+			    return true;
+			  }
+			});		
 
 		//Initialize PD path
 		try {
 			initPd();
 			loadPatch();
 		} catch (IOException e) {
-			Log.e(TAG, e.toString());
+			Log.e(LOG_TAG, e.toString());
 			finish();
 		}
+		
+		//prepare for audio file recording
+        mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
+        mFileName += "/audiorecordtest.3gp";
 	}
 
 	private void initPd() throws IOException {
@@ -102,6 +112,9 @@ public class MainActivity extends Activity {
 
 	public void onPlayButtonClick(View view) {
 		
+		//this is how to call javascript functions from here... it works! 
+		//notationWebView.loadUrl("javascript:createRoot()");
+		
 		int curRootNote = rightHand.getCurrentMidiRootNote();
 		if (curRootNote!= -1){
 			PdBase.sendFloat("midinote1", curRootNote);
@@ -113,9 +126,81 @@ public class MainActivity extends Activity {
 			PdBase.sendFloat("midinote2", curGuessNote);
 			PdBase.sendBang("guessTrigger");
 		}
-
-		
 	}
+	
+    public void onRecordSoundButtonClick(View v) {
+        onRecord(mStartRecording);
+        if (mStartRecording) {
+        	((Button) v).setText("Stop recording");
+        } else {
+        	((Button) v).setText("Start recording");
+        }
+        mStartRecording = !mStartRecording;
+    }
+    
+    public void onPlaySoundButtonClick(View v) {
+        onPlay(mStartPlaying);
+        if (mStartPlaying) {
+        	((Button) v).setText("Stop playing");
+        } else {
+        	((Button) v).setText("Start playing");
+        }
+        mStartPlaying = !mStartPlaying;
+    }
+	
+    private void onRecord(boolean start) {
+        if (start) {
+            startRecording();
+        } else {
+            stopRecording();
+        }
+    }
+
+    private void onPlay(boolean start) {
+        if (start) {
+            startPlaying();
+        } else {
+            stopPlaying();
+        }
+    }
+
+    private void startPlaying() {
+        mPlayer = new MediaPlayer();
+        try {
+            mPlayer.setDataSource(mFileName);
+            mPlayer.prepare();
+            mPlayer.start();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+    }
+
+    private void stopPlaying() {
+        mPlayer.release();
+        mPlayer = null;
+    }
+
+    private void startRecording() {
+        mRecorder = new MediaRecorder();
+        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mRecorder.setOutputFile(mFileName);
+        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            mRecorder.prepare();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+
+        mRecorder.start();
+    }
+
+    private void stopRecording() {
+        mRecorder.stop();
+        mRecorder.release();
+        mRecorder = null;
+    }
 	
 	public void onSettingsButtonClick(View view) {
 		
@@ -153,6 +238,11 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		PdAudio.stopAudio();
+		
+        if (mRecorder != null) {
+            mRecorder.release();
+            mRecorder = null;
+        }
 	}
 
 	@Override

@@ -4,6 +4,9 @@
     android:versionCode="3"
     android:versionName="1"
     android:anyDensity ="false"  >
+    
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -35,5 +38,7 @@
                 android:value="com.example.solfege.MainActivity" />
         </activity>
     </application>
+    
+    
 
 </manifest>
