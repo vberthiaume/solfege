@@ -2,6 +2,8 @@ package com.solfege.solfege;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.puredata.android.io.AudioParameters;
 import org.puredata.android.io.PdAudio;
@@ -129,7 +131,7 @@ public class MainActivity extends Activity {
 	}
 	
     public void onRecordSoundButtonClick(View v) {
-        onRecord(mStartRecording);
+        onRecord(mStartRecording, v);
         if (mStartRecording) {
         	((Button) v).setText("Stop recording");
         } else {
@@ -139,7 +141,7 @@ public class MainActivity extends Activity {
     }
     
     public void onPlaySoundButtonClick(View v) {
-        onPlay(mStartPlaying);
+        onPlay(mStartPlaying, v);
         if (mStartPlaying) {
         	((Button) v).setText("Stop playing");
         } else {
@@ -148,28 +150,39 @@ public class MainActivity extends Activity {
         mStartPlaying = !mStartPlaying;
     }
 	
-    private void onRecord(boolean start) {
+    private void onRecord(boolean start, View v) {
         if (start) {
-            startRecording();
+            startRecording(v);
         } else {
             stopRecording();
         }
     }
 
-    private void onPlay(boolean start) {
+    private void onPlay(boolean start, View v) {
         if (start) {
-            startPlaying();
+            startPlaying(v);
         } else {
             stopPlaying();
         }
     }
 
-    private void startPlaying() {
+    private void startPlaying(final View v) {
         mPlayer = new MediaPlayer();
         try {
             mPlayer.setDataSource(mFileName);
             mPlayer.prepare();
             mPlayer.start();
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                        	onPlaySoundButtonClick(v);
+                        }
+                    });
+                }
+            }, 3000); 
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
         }
@@ -180,7 +193,7 @@ public class MainActivity extends Activity {
         mPlayer = null;
     }
 
-    private void startRecording() {
+    private void startRecording(final View v) {
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -194,6 +207,17 @@ public class MainActivity extends Activity {
         }
 
         mRecorder.start();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                    	onRecordSoundButtonClick(v);
+                    }
+                });
+            }
+        }, 3000); 
     }
 
     private void stopRecording() {
