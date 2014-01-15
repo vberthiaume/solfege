@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Parametres</string>
+    <string name="title_activity_main">Activite principale</string>
+    <string name="Staff_desc">Portee</string>
+    <string name="remplirBouton1">1 2 3 maj</string>
+    <string name="playButton">Jouer</string>
+    <string name="recordButton">Enregistrer son</string>
+    <string name="playSoundButton">Jouer un son</string>
+    <string name="settingsButton">Paramètres</string>
+    <string name="title_activity_settings">Solfege - Paramètres]</string>
+    <string name="noteProbLabel">Probabilité de lecture des degrés</string>
+    <string name="rhythmProbLabel">Probabilité de lecture des rythmes</string>
+    <string name="firstRhythmProbLabel">Croche</string>
+    <string name="secondRhythmProbLabel">Noire</string>
+    <string name="thirdRhythmProbLabel">Blanche</string>
+    <string name="fourthRhythmProbLabel">Ronde</string>
+    
+</resources>
