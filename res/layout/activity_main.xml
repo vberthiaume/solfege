@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-        <Button
+        <!-- <Button
             android:id="@+id/recordSoundButton"
             android:layout_width="fill_parent"
             android:layout_weight = "1"
@@ -38,17 +38,17 @@
             android:layout_height="wrap_content"
             android:onClick="onPlaySoundButtonClick"
             android:text="@string/playSoundButton" />
-        
+         -->
             
 
         </LinearLayout>
 
             <Button
-                android:id="@+id/playButton"
+                android:id="@+id/mainButton"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onPlayButtonClick"
-                android:text="@string/playButton" />
+                android:onClick="onMainButtonClick"
+                android:text="@string/mainButton" />
         
         <!--
 	    <Button

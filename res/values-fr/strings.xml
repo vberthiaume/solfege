@@ -4,7 +4,7 @@
     <string name="title_activity_main">Activite principale</string>
     <string name="Staff_desc">Portee</string>
     <string name="remplirBouton1">1 2 3 maj</string>
-    <string name="playButton">Jouer</string>
+    <string name="mainButton">Jouer</string>
     <string name="recordButton">Enregistrer son</string>
     <string name="playSoundButton">Jouer un son</string>
     <string name="settingsButton">Paramètres</string>

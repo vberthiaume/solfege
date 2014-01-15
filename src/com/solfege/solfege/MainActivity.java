@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import org.puredata.android.io.AudioParameters;
 import org.puredata.android.io.PdAudio;
 import org.puredata.android.utils.PdUiDispatcher;
+import org.puredata.core.PdListener;
 import org.puredata.core.PdBase;
 import org.puredata.core.utils.IoUtils;
 
@@ -43,8 +44,6 @@ public class MainActivity extends Activity {
 	private static String mFileName = null;
 	boolean mStartRecording = true;
 	boolean mStartPlaying = true;
-	   
-	
 
 
 	@Override
@@ -89,10 +88,17 @@ public class MainActivity extends Activity {
 	private void initPd() throws IOException {
 		// Configure the audio glue
 		int sampleRate = AudioParameters.suggestSampleRate();
-		PdAudio.initAudio(sampleRate, 0, 2, 8, true);
+		PdAudio.initAudio(sampleRate, 1, 2, 8, true);
+		Log.i(LOG_TAG, "pitch: ");
 
 		// Create and install the dispatcher
 		dispatcher = new PdUiDispatcher();
+		dispatcher.addListener("pitch", new PdListener.Adapter(){
+			@Override
+				public void receiveFloat(String source, float x) {
+				Log.i(LOG_TAG, "pitch: " + x);
+			}
+		});
 		PdBase.setReceiver(dispatcher);
 	}
 
@@ -100,7 +106,7 @@ public class MainActivity extends Activity {
 		File dir = getFilesDir();
 //		IoUtils.extractZipResource(getResources().openRawResource(R.raw.no_toggle), dir, true);
 //		File patchFile = new File(dir, "solfege.pd");
-		IoUtils.extractZipResource(getResources().openRawResource(R.raw.toggle), dir, true);
+		IoUtils.extractZipResource(getResources().openRawResource(R.raw.toggle_pitch), dir, true);
 		File patchFile = new File(dir, "solfege.pd");
 		int val = PdBase.openPatch(patchFile.getAbsolutePath());
 	}
@@ -112,7 +118,9 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	public void onPlayButtonClick(View view) {
+	public void onMainButtonClick(View view) {
+		
+		//DISPLAY AND PLAY 
 		
 		//this is how to call javascript functions from here... it works! 
 		//notationWebView.loadUrl("javascript:createRoot()");
@@ -129,6 +137,7 @@ public class MainActivity extends Activity {
 			PdBase.sendBang("guessTrigger");
 		}
 	}
+
 	
     public void onRecordSoundButtonClick(View v) {
         onRecord(mStartRecording, v);

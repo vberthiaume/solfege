@@ -73,9 +73,7 @@ div.egcode {
 		<canvas id="vexFlowCanvas" style="width: 90%;"></canvas>
 		<script>
 	        try{
-
 				var canvas = document.getElementById('vexFlowCanvas');
-				
 				var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
 				var ctx = renderer.getContext();
 				var stave = new Vex.Flow.Stave(0, 0, canvas.width-10);
@@ -88,7 +86,9 @@ div.egcode {
 				alert("error: " + e);  
 			}
         </script>
+		
 		<input type="button" id="myButton" onclick="htmlButtonClicked()" value="Give me a root note!" style="width: 100%;">
+		 
 
 	</div>
 </body></html>
