@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <string name="app_name">Solfege</string>
     <string name="button_send">Joue moi des notes!</string>
     <string name="action_settings">Settings</string>
@@ -20,4 +21,8 @@
     <string name="fourthRhythmProbLabel">Ronde</string>
 
 
+
+
 </resources>
+
+
