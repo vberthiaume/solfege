@@ -11,19 +11,33 @@
     android:overScrollMode="always"
     android:padding="10dp" >
 
-        
-        <WebView
-            android:id="@+id/partitionHtml"
-            android:layout_width="fill_parent"
-            android:layout_height="0dip"
-            android:layout_weight = "1"
-            android:overScrollMode="always" />
+    <WebView
+        android:id="@+id/partitionHtml"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight=".5"
+        android:overScrollMode="always" />
 
+    <com.solfege.solfege.PitchView
+        android:id="@+id/pitch_view"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight=".5">
+    </com.solfege.solfege.PitchView>
+
+    <Button
+        android:id="@+id/mainButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onMainButtonClick"
+        android:text="@string/mainButton" />
+
+    <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-        <!-- <Button
+         <Button
             android:id="@+id/recordSoundButton"
             android:layout_width="fill_parent"
             android:layout_weight = "1"
@@ -38,19 +52,9 @@
             android:layout_height="wrap_content"
             android:onClick="onPlaySoundButtonClick"
             android:text="@string/playSoundButton" />
-         -->
-            
-
-        </LinearLayout>
-
-            <Button
-                android:id="@+id/mainButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onMainButtonClick"
-                android:text="@string/mainButton" />
-        
-        <!--
+            </LinearLayout>
+    -->
+    <!--
 	    <Button
 	        android:id="@+id/settingsButton"
 	        android:layout_width="wrap_content"
@@ -59,8 +63,6 @@
 	        android:layout_alignRight="@+id/partitionHtml"
 	        android:text="@string/settingsButton" 
 	        android:onClick ="onSettingsButtonClick"/>
-        -->
-        
-
+    -->
 
 </LinearLayout>
