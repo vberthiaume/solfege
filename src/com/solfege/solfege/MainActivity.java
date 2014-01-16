@@ -116,7 +116,7 @@ public class MainActivity extends Activity {
 
 	private void initPd() throws IOException {
 		// Configure the audio glue
-		int sampleRate = AudioParameters.suggestSampleRate();
+		int sampleRate = 8000;//AudioParameters.suggestSampleRate();
 		//PdAudio.initAudio(sampleRate, 0, 2, 8, true);
 		pdService.initAudio(sampleRate, 1, 2, 10.0f);
 		pdService.startAudio();
@@ -340,7 +340,7 @@ public class MainActivity extends Activity {
 	public void onDestroy() {
 		super.onDestroy();
 		unbindService(pdConnection);
-//		PdAudio.release();
-//		PdBase.release();
+		PdAudio.release();
+		PdBase.release();
 	}
 }

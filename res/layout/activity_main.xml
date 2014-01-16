@@ -54,7 +54,7 @@
             android:text="@string/playSoundButton" />
             </LinearLayout>
     -->
-    <!--
+    
 	    <Button
 	        android:id="@+id/settingsButton"
 	        android:layout_width="wrap_content"
@@ -63,6 +63,6 @@
 	        android:layout_alignRight="@+id/partitionHtml"
 	        android:text="@string/settingsButton" 
 	        android:onClick ="onSettingsButtonClick"/>
-    -->
+    
 
 </LinearLayout>
