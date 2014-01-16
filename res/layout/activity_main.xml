@@ -29,8 +29,7 @@
         android:id="@+id/mainButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="onMainButtonClick"
-        android:text="@string/mainButton" />
+        android:text="@string/mainButtonGiveRoot" />
 
     <!--
         <LinearLayout

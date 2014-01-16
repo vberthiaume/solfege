@@ -44,21 +44,19 @@ public class PitchView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		float halfWidth = width / 2;
-		paint.setStrokeWidth(6.0f);
+		paint.setStrokeWidth(6.0f);		//width of center, green line
 		paint.setColor(Color.GREEN);
 		canvas.drawLine(halfWidth, 0, halfWidth, height, paint);
 		float dx = (currentPitch - centerPitch) / 2;
 		if (-1 < dx && dx < 1) {
-			paint.setStrokeWidth(2.0f);
+			paint.setStrokeWidth(2.0f); //width of indicative blue line
 			paint.setColor(Color.BLUE);
 		} else {
-			paint.setStrokeWidth(8.0f);
+			paint.setStrokeWidth(8.0f); //width of indicative extremely bad red line
 			paint.setColor(Color.RED);
 			dx = (dx < 0) ? -1 : 1;
 		}
 		double phi = dx * Math.PI / 4;
-		canvas.drawLine(halfWidth, height, halfWidth + (float) Math.sin(phi)
-				* height * 0.9f,
-				height - (float) Math.cos(phi) * height * 0.9f, paint);
+		canvas.drawLine(halfWidth, height, halfWidth + (float) Math.sin(phi) * height * 0.9f, height - (float) Math.cos(phi) * height * 0.9f, paint);
 	}
 }
