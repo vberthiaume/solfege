@@ -11,27 +11,27 @@
     android:overScrollMode="always"
     android:padding="10dp" >
 
+    <WebView
+        android:id="@+id/partitionHtml"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight=".5"
+        android:overScrollMode="always" />
 
-
-
+    <com.solfege.solfege.PitchView
+        android:id="@+id/pitch_view"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight=".5">
+    </com.solfege.solfege.PitchView>
 
     <Button
-        android:id="@+id/singButton"
+        android:id="@+id/mainButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="onSingButtonClick"
-        android:text="Bouton" />
+        android:text="@string/mainButtonGiveRoot" />
+
+
     
-    <Button
-        android:id="@+id/harmonyButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onHarmonyButtonClick"
-        android:text="Bouton" />
-
-
-   
-
 
 </LinearLayout>
-

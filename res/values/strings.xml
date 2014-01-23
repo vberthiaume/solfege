@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
+    <!--  MAIN GLOBAL STRINGS -->
     <string name="app_name">Solfege</string>
-    <string name="button_send">Joue moi des notes!</string>
+        <string name="title_activity_main">MainActivity</string>
+        
+        <!--  MAIN ACTIVITY STRINGS -->
+        <string name="mainButtonGiveRoot">Give me a root note&#33;</string>
+        <string name="mainButtonGiveGuess">Give me a note to guess&#33;</string>
+        <string name="mainButtonPlayAnswer">Play the answer&#33;</string>
+    <string name="mainButtonStartOver">Start over&#33;</string>
+    
+    <!--  STRINGS RELATED TO SETTINGS -->
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="Staff_desc">Staff</string>
-    <string name="remplirBouton1">1 2 3 maj</string>
-    <string name="mainButton">Play</string>
-    <string name="recordButton">Record sound</string>
-    <string name="playSoundButton">Play sound</string>
     <string name="settingsButton">Paramètres</string>
     <string name="title_activity_settings">Solfege - Paramètres]</string>
     <string name="noteProbLabel">Probabilité de lecture des degrés</string>
@@ -19,10 +21,9 @@
     <string name="secondRhythmProbLabel">Noire</string>
     <string name="thirdRhythmProbLabel">Blanche</string>
     <string name="fourthRhythmProbLabel">Ronde</string>
-
-
-
+    
+    <!--  STRINGS RELATED TO ANDROID MEDIA RECORDER BUTTON -->
+    <string name="recordButton">Enregistrer son</string>
+    <string name="playSoundButton">Jouer un son</string>
 
 </resources>
-
-

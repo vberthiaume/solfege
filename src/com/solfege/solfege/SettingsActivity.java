@@ -21,8 +21,8 @@ public class SettingsActivity extends Activity {
 		
 		//get the intent that was used to start this activity
 		Intent intent = getIntent();
-		m_degreeProb = intent.getIntArrayExtra(MainActivity.DEGREE_PROBABILITY);
-		m_rhythmProb = intent.getIntArrayExtra(MainActivity.RHYTHM_PROBABILITY);
+		m_degreeProb = intent.getIntArrayExtra(SingActivity.DEGREE_PROBABILITY);
+		m_rhythmProb = intent.getIntArrayExtra(SingActivity.RHYTHM_PROBABILITY);
 		
 		// initialize the seek bars for degree probability
 		initVerticalSeekBars();
@@ -73,8 +73,8 @@ public class SettingsActivity extends Activity {
 		
 		getVerticalSeekBarProgress();
 		
-		resultIntent.putExtra(MainActivity.DEGREE_PROBABILITY, m_degreeProb);
-		resultIntent.putExtra(MainActivity.RHYTHM_PROBABILITY, m_rhythmProb);
+		resultIntent.putExtra(SingActivity.DEGREE_PROBABILITY, m_degreeProb);
+		resultIntent.putExtra(SingActivity.RHYTHM_PROBABILITY, m_rhythmProb);
 	
 		
 		//setResult(RESULT_OK, resultIntent);		
