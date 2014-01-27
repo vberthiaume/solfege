@@ -46,7 +46,7 @@
             android:parentActivityName="com.solfege.solfege.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.solfege.MainActivity" />
+                android:value="com.solfege.solfege.MainActivity" />
         </activity>
         <service android:name="org.puredata.android.service.PdService" />
     </application>
