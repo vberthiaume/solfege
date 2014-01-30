@@ -278,7 +278,7 @@ public class SingActivity extends Activity {
                 if ("google_sdk".equals( Build.PRODUCT )){
                 sampleRate = 8000;
                 } else {
-                        sampleRate = AudioParameters.suggestSampleRate();
+                        sampleRate =  8000;//AudioParameters.suggestSampleRate();
                 }
                 
                 //PdAudio.initAudio(sampleRate, 0, 2, 8, true);

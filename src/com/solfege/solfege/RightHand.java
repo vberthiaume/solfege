@@ -82,7 +82,7 @@ public class RightHand {
 	@JavascriptInterface
 	public String getNewGuessNote(){
 		Random rand = new Random();
-		m_currentGuessNote = notes_C_Scale[rand.nextInt(notes_C_Scale.length)] + "/4";
+		m_currentGuessNote = notes[rand.nextInt(notes.length)] + "/4";
 		return m_currentGuessNote;
 	}
 	
@@ -107,7 +107,6 @@ public class RightHand {
 		}
 	}
 	
-	
 	/**
 	 * return the current guessNote
 	 * @return
@@ -120,8 +119,6 @@ public class RightHand {
 		}
 	}
 	
-	
-
 	/**
 	 * Prends un degré en entrée et renvoie les notes de la main droite
 	 * 

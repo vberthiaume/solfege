@@ -70,10 +70,22 @@ function createGuessNote(){
 	try{
 		//generate random guess note
 		var guessNote = righthand.getNewGuessNote();
-	
+		
 		//get that root in array form, splitting on spaces
 		guessNoteArray = guessNote.split(" ");
+		guessNoteArray[0] = guessNoteArray[0].toLowerCase();
 		
+		if (guessNoteArray[0].length > 3){
+			guessNoteArray[0] = guessNoteArray[0].replace("#","");
+			guessNoteArray[0] = guessNoteArray[0].split(" ");
+			console.log("SSSSSSSSSeeeeb: " + guessNoteArray[0]);
+			// Create the notes
+			var notes = [
+			  new Vex.Flow.StaveNote({ keys: rootArray, duration: "q" }),
+			  new Vex.Flow.StaveNote({ keys: guessNoteArray[0], duration: "q" }).addAccidental(0, new Vex.Flow.Accidental("#"))
+			];
+		}
+		else{
 		//document.getElementById('myButton').value = "guessNoteArray";
 		
 		// Create the notes
@@ -81,7 +93,7 @@ function createGuessNote(){
 		  new Vex.Flow.StaveNote({ keys: rootArray, duration: "q" }),
 		  new Vex.Flow.StaveNote({ keys: guessNoteArray, duration: "q" })
 		];
-		
+		  };
 		// Create a voice in 4/4
 		var voice = new Vex.Flow.Voice({
 		  num_beats: 2,

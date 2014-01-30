@@ -44,10 +44,10 @@ public class LeftHand {
 	
     @JavascriptInterface
     public String genereAccordAbc( int degrein) {
-		
+		    
 		Vector chord = gauche(degrein);
 		String strChord = chord.toString();
-
+		        
 		//get numbers from string in ints
 		String[] strChordMidiNotes =  strChord.substring(1, strChord.length()-1).split(",");
 		

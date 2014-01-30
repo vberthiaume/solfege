@@ -20,14 +20,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="onSingButtonClick"
-        android:text="Bouton" />
+        android:text="Sing" />
     
     <Button
         android:id="@+id/harmonyButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="onHarmonyButtonClick"
-        android:text="Bouton" />
+        android:text="Harmony" />
 
 
    
