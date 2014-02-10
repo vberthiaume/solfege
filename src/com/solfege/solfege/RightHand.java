@@ -15,13 +15,12 @@ public class RightHand {
 	
 	private String m_currentRoot;
 	private String m_currentGuessNote;
+	private String m_currentStave;
 	
 	private int m_webViewHeight;
 	private int m_webViewWidth;
 	
 
-	// TODO faire en sorte que ce tableau soit setté par sept curseurs sur
-	// l'interface (valeurs entre 0 et 10)
 	private int[] degreeProbability = { 4, 3, 4, 5, 7, 4, 3 };
 
 	
@@ -37,9 +36,9 @@ public class RightHand {
 	//aussi entre 0 et 10
 	private int[] rhythmProbability = { 0, 1, 4, 0 };
 	
-	private static final String[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "B#" };
+	private static final String[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 	//private static final String[] notes_C_Scale = { "C", "D", "E", "F", "G", "A", "B"};
-	private static final String[] notes_C_Scale = { "C", "C", "D", "D", "E", "F", "F", "G", "G", "A", "A", "B", "B" };
+	private static final String[] notes_C_Scale = { "C", "C", "D", "D", "E", "F", "F", "G", "G", "A", "A", "B"};
 
 	public RightHand() {
 
@@ -65,46 +64,77 @@ public class RightHand {
 	}
 	
 	/**
-	 * create and return a new random note as a root
+	 * return the abc note for the given midi note 
+	 * @param abcNote
+	 * @param octave
 	 * @return
 	 */
-	@JavascriptInterface
-	public String getNewRootNote(){
+	private String midiToAbc(int midi) {
+		return notes_C_Scale[midi%12];
+	}
+	
+	
+
+	/**
+	 * CHOOSES A NEW STAVE and create and return a new random note as a root
+	 * @return
+	 */
+	public int getNewRootNote(){
+		
+		getNewGuessStave();
+		
 		Random rand = new Random();
-		m_currentRoot = notes_C_Scale[rand.nextInt(notes_C_Scale.length)] + "/4";
-		return m_currentRoot;
+		m_currentRoot = notes_C_Scale[rand.nextInt(notes_C_Scale.length)];
+		
+		if (m_currentStave == "treble"){
+			return abcToMidi(m_currentRoot, 5);
+		} else {
+			return abcToMidi(m_currentRoot, 4);
+		}
 	}
 	
 	/**
 	 * create and return a new random note as a guess note
 	 * @return
 	 */
-	@JavascriptInterface
-	public String getNewGuessNote(){
+	public int getNewGuessNote(){
 		Random rand = new Random();
-		m_currentGuessNote = notes_C_Scale[rand.nextInt(notes_C_Scale.length)] + "/4";
-		return m_currentGuessNote;
+		m_currentGuessNote = notes_C_Scale[rand.nextInt(notes_C_Scale.length)];
+		
+		if (m_currentStave == "treble"){
+			return abcToMidi(m_currentGuessNote, 5);
+		} else {
+			return abcToMidi(m_currentGuessNote, 4);
+		}
 	}
+	
+	/**
+	 * Return either treble or bass note
+	 * @return
+	 */
+	public String getNewGuessStave(){
+		if (Math.random()<.5){
+			m_currentStave = "treble";
+		} else {
+			m_currentStave = "bass";
+		}
+		return m_currentStave;
+	}
+
 	
 	/**
 	 * reset both the root and guess note to "" 
 	 */
-	@JavascriptInterface
 	public void resetNotes(){
 		m_currentRoot = "";
 		m_currentGuessNote = "";
 	}
 
-	/**
-	 * create and return the current root note
-	 * @return
-	 */
-	public int getCurrentMidiRootNote(){
-		if (m_currentRoot == null || m_currentRoot == ""){
-			return -1;
-		} else {
-			return abcToMidi (m_currentRoot.substring(0, m_currentRoot.length()-2), 4);
-		}
+
+//------------------------------- FUNCTIONS CALLED BY JAVASCRIPT ------------------------------- 	
+	@JavascriptInterface
+	public String getCurrentMidiRootNote(){
+		return m_currentRoot;// + "/4";
 	}
 	
 	
@@ -112,15 +142,22 @@ public class RightHand {
 	 * return the current guessNote
 	 * @return
 	 */
-	public int getCurrentMidiGuessNote(){
-		if (m_currentGuessNote == null || m_currentGuessNote == ""){
-			return -1;
-		} else {
-			return abcToMidi (m_currentGuessNote.substring(0, m_currentGuessNote.length()-2), 4);
-		}
+	@JavascriptInterface
+	public String getCurrentMidiGuessNote(){
+		return m_currentGuessNote;// + "/4";
 	}
 	
-	
+	/**
+	 * return the current guessNote
+	 * @return
+	 */
+	@JavascriptInterface
+	public String getCurrentStave(){
+		return m_currentStave;
+	}
+//------------------------------- ENDOF FUNCTIONS CALLED BY JAVASCRIPT -------------------------------	
+
+
 
 	/**
 	 * Prends un degré en entrée et renvoie les notes de la main droite

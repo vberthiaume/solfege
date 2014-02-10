@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+
 <!-- VexFlow Compiled Source -->
 <script src="./solfegeHtmlView_files/vexflow-min.js"></script>
 <style type="text/css"></style>
@@ -15,8 +16,12 @@
 <style type="text/css">
 canvas {
 	background: #eed;
-	padding: 10px;
-	border: 10px solid #ddc;
+	padding: 0px;
+	border: 0px solid #ddc;
+}
+
+body {
+  background: #eed;
 }
 
 div.egcode {
@@ -56,39 +61,33 @@ div.egcode {
       })
     })
     
-    stateEnum = {
-    	INITIAL 		: "Give me a root note!",
-    	GOT_ROOT 		: "Give me a note to guess!",
-    	GOT_GUESS_NOTE 	: "Let's start over!"
-	}
-	
-	var currentState = stateEnum.INITIAL;
-	var rootArray, guessNoteArray;
-
-	    
 	</script>
 </head>
 <body>
-	<div class="content">
-		<canvas id="vexFlowCanvas" style="width: 90%;"></canvas>
+	<div class="content" >
+		<canvas id="vexFlowCanvas" style="width: 100%;"></canvas>
 		<script>
 	        try{
 				var canvas = document.getElementById('vexFlowCanvas');
+				//var height = mainActivity.getWebViewHeight();
+				//var width = mainActivity.getWebViewWidth();
+				//canvas.width  = width;
+				//canvas.height = height; 
+				//canvas.style.width  = width + 'px';
+				//canvas.style.height = height + 'px';
+				
 				var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
 				var ctx = renderer.getContext();
-				var stave = new Vex.Flow.Stave(0, 0, canvas.width-10);
+				var stave = new Vex.Flow.Stave(0, -canvas.height*.15, canvas.width*.99);
+				//var stave = new Vex.Flow.Stave(0, 0, 100);
 				stave.addClef("treble").setContext(ctx).draw();
 			
-				// var stave2 = new Vex.Flow.Stave(10, 75, 200);
-				// stave2.addClef("bass").setContext(ctx).draw();
+				var stave2 = new Vex.Flow.Stave(0, canvas.height*.4, canvas.width*.99);
+				stave2.addClef("bass").setContext(ctx).draw();
 			} catch (e) {
 				console.log("error: " + e);
 				alert("error: " + e);  
 			}
         </script>
-		
-		<!-- <input type="button" id="myButton" onclick="htmlButtonClicked()" value="Give me a root note!" style="width: 100%;">
-		  -->
-
 	</div>
 </body></html>

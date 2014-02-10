@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.solfege.solfege"
-    android:versionCode="3"
+    android:versionCode="5"
     android:versionName="1"
     android:anyDensity ="false"  >
     
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />  -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="10"
         android:targetSdkVersion="19" />
 
 

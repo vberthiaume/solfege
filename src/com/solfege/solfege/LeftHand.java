@@ -60,8 +60,6 @@ public class LeftHand {
 				e.printStackTrace();
 			}
 		}
-
-		//TODO faire une fonction qui prépare le contexte (barres de mesures+clef+tab=false...etc)
 		
 		//put them in a string like "a/4 b/4 c/4"
 		return strAbcChord.trim();            

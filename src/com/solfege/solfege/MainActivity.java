@@ -11,11 +11,14 @@ import org.puredata.android.utils.PdUiDispatcher;
 import org.puredata.core.PdBase;
 import org.puredata.core.PdListener;
 import org.puredata.core.utils.IoUtils;
+
+import android.animation.ArgbEvaluator;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -26,6 +29,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.ConsoleMessage;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.os.Environment;
@@ -49,6 +53,7 @@ public class MainActivity extends Activity {
 	private PdService pdService = null;
 	private int curRootNote, curGuessNote;
 	private Button mainButton;
+	private float m_fCurAmplitude = 0;
 	
 	public enum states {
 	    INIT, 
@@ -65,37 +70,23 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		mainButton = (Button)findViewById(R.id.mainButton);
-		mainButton.setOnClickListener(new OnClickListener()
-        {
+		mainButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				onMainButtonClick(v);
 			}
        });
-		
-		cur_state = states.INIT; 
 
 		//initialize right and left hands
 		rightHand = new RightHand();
 		leftHand = new LeftHand();
 		
-		// load the notation view
-		notationWebView = (WebView) findViewById(R.id.partitionHtml);
-		notationWebView.loadUrl("file:///android_asset/solfegeHtmlView.htm");
-		
-		//enable javascript
-		notationWebView.getSettings().setJavaScriptEnabled(true);
-		notationWebView.addJavascriptInterface(leftHand, "lefthand");
-		notationWebView.addJavascriptInterface(rightHand, "righthand");
-		notationWebView.setWebChromeClient(new WebChromeClient() {
-			  public boolean onConsoleMessage(ConsoleMessage cm) {
-			    Log.e(LOG_TAG, cm.message() + " -- From line " + cm.lineNumber() + " of " + cm.sourceId() );
-			    return true;
-			  }
-			});		
+		//init state and init web view
+		cur_state = states.INIT; 
+		initWebView();	
 
-		//Initialize PD path
+		//Initialize PD
+		initSystemServices();
 		bindService(new Intent(this, PdService.class), pdConnection, BIND_AUTO_CREATE);
         pitchView = (PitchView) findViewById(R.id.pitch_view);
         pitchView.setCenterPitch(127);
@@ -103,7 +94,43 @@ public class MainActivity extends Activity {
 //		//prepare for audio file recording
 //      mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
 //      mFileName += "/audiorecordtest.3gp";
+	}
+	
+	private void initWebView() {
+		// load the notation view
+		notationWebView = (WebView) findViewById(R.id.partitionHtml);
+		notationWebView.loadUrl("file:///android_asset/solfegeHtmlView.htm");
 
+		// enable javascript
+		notationWebView.getSettings().setJavaScriptEnabled(true);
+		//notationWebView.setBackgroundColor(Color.argb(1,234,238,221));
+		notationWebView.addJavascriptInterface(leftHand, "leftHand");
+		notationWebView.addJavascriptInterface(rightHand, "rightHand");
+		notationWebView.addJavascriptInterface(this, "mainActivity");
+		
+		
+		notationWebView.setWebChromeClient(new WebChromeClient() {
+			public boolean onConsoleMessage(ConsoleMessage cm) {
+				Log.e(LOG_TAG, cm.message() + " -- From line " + cm.lineNumber() + " of " + cm.sourceId());
+				return true;
+			}
+		});
+	}
+	
+	@JavascriptInterface
+	public int getWebViewWidth(){
+		if (notationWebView == null){
+			notationWebView = (WebView) findViewById(R.id.partitionHtml);
+		}
+		return notationWebView.getWidth();
+	}
+	
+	@JavascriptInterface
+	public int getWebViewHeight(){
+		if (notationWebView == null){
+			notationWebView = (WebView) findViewById(R.id.partitionHtml);
+		}
+		return notationWebView.getHeight();
 	}
 
 	@Override
@@ -119,10 +146,14 @@ public class MainActivity extends Activity {
 			switch (cur_state) {
 			case INIT:
 				// create and display root note
+				
+				//get new root note
+				curRootNote = rightHand.getNewRootNote();
+				
+				//display note in javascript
 				notationWebView.loadUrl("javascript:createRoot()");
-
+				
 				// send note for PD to play
-				curRootNote = rightHand.getCurrentMidiRootNote();
 				PdBase.sendFloat("midinote1", curRootNote);
 				PdBase.sendBang("rootTrigger");
 
@@ -134,11 +165,13 @@ public class MainActivity extends Activity {
 				break;
 
 			case GIVE_GUESS:
+				
+				curGuessNote = rightHand.getNewGuessNote();
 				// create and display guess note
+				//notationWebView.loadUrl("javascript:createGuessNote(" + rightHand.getCurrentMidiGuessNote() + ")");
 				notationWebView.loadUrl("javascript:createGuessNote()");
 
 				// start recording
-				curGuessNote = rightHand.getCurrentMidiGuessNote();
 				pitchView.setCenterPitch(curGuessNote % 12);
 
 				// prepare for next state, ask for answer
@@ -150,8 +183,8 @@ public class MainActivity extends Activity {
 			case PLAY_ANSWER:
 
 				// play answer
-				PdBase.sendFloat("midinote2", curGuessNote);
-				PdBase.sendBang("guessTrigger");
+				PdBase.sendFloat("midinote1", curGuessNote);
+				PdBase.sendBang("rootTrigger");
 
 				// prepare for next state, ask for answer
 				cur_state = states.START_OVER;
@@ -161,6 +194,7 @@ public class MainActivity extends Activity {
 			case START_OVER:
 
 				// reset webview
+				rightHand.resetNotes();
 				notationWebView.loadUrl("javascript:reset()");
 
 				// prepare for next state
@@ -179,19 +213,6 @@ public class MainActivity extends Activity {
 			Log.e(LOG_TAG, e.toString());
 			finish();
 		}
-
-		// int curRootNote = rightHand.getCurrentMidiRootNote();
-		// if (curRootNote!= -1){
-		// PdBase.sendFloat("midinote1", curRootNote);
-		// PdBase.sendBang("rootTrigger");
-		// }
-		//
-		// int curGuessNote = rightHand.getCurrentMidiGuessNote();
-		// if (curGuessNote != -1){
-		// PdBase.sendFloat("midinote2", curGuessNote);
-		// PdBase.sendBang("guessTrigger");
-		// pitchView.setCenterPitch(curGuessNote%12);
-		// }
 	}
 
 	public void onSettingsButtonClick(View view) {
@@ -223,6 +244,9 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		cur_state = states.INIT; 
+		mainButton.setText(R.string.mainButtonGiveRoot);
+		initWebView();
 		PdAudio.startAudio(this);
 	}
 
@@ -247,13 +271,13 @@ public class MainActivity extends Activity {
 	
 	//------------------------------ PUREDATA STUFF --------------------------------------
 	private void initPd() throws IOException {
-		int sampleRate;
+		
 		// Configure the audio glue
-		if ("google_sdk".equals( Build.PRODUCT )){
+		int sampleRate;
+		sampleRate = AudioParameters.suggestSampleRate();
+		//IF EMULATOR USE THIS
+		//TODO find way to test for emulator
 		sampleRate = 8000;
-		} else {
-			sampleRate = AudioParameters.suggestSampleRate();
-		}
 		
 		//PdAudio.initAudio(sampleRate, 0, 2, 8, true);
 		pdService.initAudio(sampleRate, 1, 2, 10.0f);
@@ -265,9 +289,20 @@ public class MainActivity extends Activity {
 		dispatcher.addListener("pitch", new PdListener.Adapter() {
 			@Override
 			public void receiveFloat(String source, final float x) {
-				pitchView.setCurrentPitch(x%12);
+				if (m_fCurAmplitude > 60)
+					pitchView.setCurrentPitch(x%12);
+				else
+					pitchView.setCurrentPitch(0);
 			}
 		});
+		
+		dispatcher.addListener("amplitude", new PdListener.Adapter() {
+			@Override
+			public void receiveFloat(String source, final float amplitude) {
+				m_fCurAmplitude = amplitude;
+			}
+		});
+		
 		PdBase.setReceiver(dispatcher);
 	}
 	
@@ -292,7 +327,7 @@ public class MainActivity extends Activity {
 
 	private void loadPatch() throws IOException {
 		File dir = getFilesDir();
-		IoUtils.extractZipResource(getResources().openRawResource(R.raw.toggle_pitch), dir, true);
+		IoUtils.extractZipResource(getResources().openRawResource(R.raw.solfege_s_trigger), dir, true);
 		File patchFile = new File(dir, "solfege.pd");
 		int val = PdBase.openPatch(patchFile.getAbsolutePath());
 	}

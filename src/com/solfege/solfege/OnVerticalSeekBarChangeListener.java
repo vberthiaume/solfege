@@ -10,10 +10,8 @@ public class OnVerticalSeekBarChangeListener implements OnSeekBarChangeListener 
 	}
 
 	public void onStartTrackingTouch(SeekBar seekBar) {
-		// TODO Auto-generated method stub
 	}
 
 	public void onStopTrackingTouch(SeekBar seekBar) {
-		// TODO Auto-generated method stub
 	}
 }
