@@ -40,11 +40,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.solfege.MainActivity" />
         </activity>
+        <activity
+            android:name="com.solfege.solfege.SingActivity"
+            android:label="activity_sing"
+            android:parentActivityName="com.solfege.solfege.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.solfege.solfege.MainActivity" />
+        </activity>
         <service android:name="org.puredata.android.service.PdService" />
     </application>
-    
-    
-
-
 </manifest>
 

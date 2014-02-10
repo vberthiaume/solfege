@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <!--_____________________________ FRENCH FILE_____________________________ -->
+    
     <!--  MAIN GLOBAL STRINGS -->
     <string name="title_activity_main">Activite principale</string>
     
     
-    <!--  MAIN ACTIVITY STRINGS -->
+    <!--  SING ACTIVITY STRINGS -->
     <string name="mainButtonGiveRoot">Donnes moi une tonale&#33;</string>
     <string name="mainButtonGiveGuess">Donnes moi une note &#224; deviner&#33;</string>
     <string name="mainButtonPlayAnswer">Jouer la r&#233;ponse&#33;</string>
     <string name="mainButtonStartOver">On recommence&#33;</string>
+    
+    <!--  MAIN ACTIVITY STRINGS -->
+    <string name="singActivityButton">Sing&#33;</string>
+    <string name="hearActivityButton">Hear&#33;</string>
     
     <!--  STRINGS RELATED TO SETTINGS -->
     <string name="action_settings">Parametres</string>

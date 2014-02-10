@@ -99,7 +99,7 @@ public class RightHand {
 	 */
 	public int getNewGuessNote(){
 		Random rand = new Random();
-		m_currentGuessNote = notes_C_Scale[rand.nextInt(notes_C_Scale.length)];
+		m_currentGuessNote = notes[rand.nextInt(notes_C_Scale.length)];
 		
 		if (m_currentStave == "treble"){
 			return abcToMidi(m_currentGuessNote, 5);
@@ -155,10 +155,8 @@ public class RightHand {
 	public String getCurrentStave(){
 		return m_currentStave;
 	}
+
 //------------------------------- ENDOF FUNCTIONS CALLED BY JAVASCRIPT -------------------------------	
-
-
-
 	/**
 	 * Prends un degré en entrée et renvoie les notes de la main droite
 	 * 

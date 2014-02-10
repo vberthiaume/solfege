@@ -2,6 +2,7 @@
 var curStave = null;
 var root = null;
 var rootArray = null;
+var isSharp = null;
 
 function createRoot(){
 	try{
@@ -82,16 +83,28 @@ function createGuessNote(guessNote){
 		var guessNote = rightHand.getCurrentMidiGuessNote();
 		//get that root in array form, splitting on spaces
 
+		if (guessNote.length > 1){
+			isSharp = true;
+			guessNote = guessNote.replace("#","");
+		} else {
+			isSharp = false;
+		}
+
 		if ( curStave == "treble"){
-			
 			guessNote = guessNote + "/4";
 			guessNoteArray = guessNote.split(" ");
 			
 			// Create the notes
-			var notes = [
-			  new Vex.Flow.StaveNote({ keys: rootArray, duration: "q" }),
-			  new Vex.Flow.StaveNote({ keys: guessNoteArray, duration: "q" })
-			];
+			var notes = null;
+			if (isSharp){
+				notes = [ new Vex.Flow.StaveNote({ keys: rootArray, duration: "q" }),
+						  new Vex.Flow.StaveNote({ keys: guessNoteArray, duration: "q" }).addAccidental(0, new Vex.Flow.Accidental("#"))
+						];
+			} else {
+				notes = [ new Vex.Flow.StaveNote({ keys: rootArray, duration: "q" }),
+						  new Vex.Flow.StaveNote({ keys: guessNoteArray, duration: "q" })
+						];
+			}
 			
 			// Create a voice in 4/4
 			var voice = new Vex.Flow.Voice({
@@ -114,10 +127,18 @@ function createGuessNote(guessNote){
 			guessNoteArray = guessNote.split(" ");
 			
 			// Create the notes
-			var notes = [
-			  new Vex.Flow.StaveNote({ keys: rootArray, duration: "q", clef: "bass" }),
-			  new Vex.Flow.StaveNote({ keys: guessNoteArray, duration: "q", clef: "bass" })
-			];
+			var notes = null;
+			if (isSharp){
+				notes = [
+				  new Vex.Flow.StaveNote({ keys: rootArray, duration: "q", clef: "bass" }),
+				  new Vex.Flow.StaveNote({ keys: guessNoteArray, duration: "q", clef: "bass" }).addAccidental(0, new Vex.Flow.Accidental("#"))
+				];
+			} else {
+				notes = [
+				  new Vex.Flow.StaveNote({ keys: rootArray, duration: "q", clef: "bass" }),
+				  new Vex.Flow.StaveNote({ keys: guessNoteArray, duration: "q", clef: "bass" })
+				];
+			}
 			
 			// Create a voice in 4/4
 			var voice = new Vex.Flow.Voice({
@@ -135,6 +156,7 @@ function createGuessNote(guessNote){
 			// Render voice... this is weird because the staves are defined in another file, in vexFlowTutorial...
 			voice.draw(ctx, stave2);
 		}
+
 	} catch (e) {
 		console.log("createGuessNote(): " + e); 
 	}
