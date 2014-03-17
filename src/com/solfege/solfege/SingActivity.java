@@ -2,8 +2,6 @@ package com.solfege.solfege;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 import org.puredata.android.io.AudioParameters;
 import org.puredata.android.io.PdAudio;
 import org.puredata.android.service.PdService;
@@ -12,14 +10,11 @@ import org.puredata.core.PdBase;
 import org.puredata.core.PdListener;
 import org.puredata.core.utils.IoUtils;
 
-import android.animation.ArgbEvaluator;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
@@ -32,11 +27,7 @@ import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.os.Environment;
-import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.widget.Button;
-import android.widget.TextView;
 
 
 public class SingActivity extends Activity {
