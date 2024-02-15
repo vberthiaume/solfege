@@ -327,7 +327,7 @@ public class SingActivity extends Activity {
 		if (!pdService.isRunning()) {
 			Intent intent = new Intent(SingActivity.this,
 					MainActivity.class);
-			pdService.startAudio(intent, R.drawable.icon, "Solfege",
+			pdService.startAudio(intent, org.puredata.android.service.R.drawable.icon, "Solfege",
 					"Return to Solfege.");
 		}
 	}

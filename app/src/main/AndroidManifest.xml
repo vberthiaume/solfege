@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Solfege">
         <activity
-            android:name="com.BMP4.solfege.MainActivity"
+            android:name="com.bmp4.solfege.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:exported="true">
@@ -22,20 +22,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.BMP4.solfege.SettingsActivity"
+            android:name="com.bmp4.solfege.SettingsActivity"
             android:label="DUCOUP"
-            android:parentActivityName="com.solfege.BMP4.MainActivity" >
+            android:parentActivityName="com.bmp4.solfege.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.BMP4.solfege.MainActivity" />
+                android:value="com.bmp4.solfege.MainActivity" />
         </activity>
         <activity
-            android:name="com.BMP4.solfege.SingActivity"
+            android:name="com.bmp4.solfege.SingActivity"
             android:label="activity_sing"
-            android:parentActivityName="com.solfege.BMP4.MainActivity" >
+            android:parentActivityName="com.bmp4.solfege.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.solfege.BMP4.MainActivity" />
+                android:value="com.bmp4.solfege.MainActivity" />
         </activity>
     </application>
 
