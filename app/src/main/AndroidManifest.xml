@@ -10,7 +10,33 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Solfege"
-        tools:targetApi="31" />
+        android:theme="@style/Theme.Solfege">
+        <activity
+            android:name="com.BMP4.solfege.MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.BMP4.solfege.SettingsActivity"
+            android:label="DUCOUP"
+            android:parentActivityName="com.solfege.BMP4.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.BMP4.solfege.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.BMP4.solfege.SingActivity"
+            android:label="activity_sing"
+            android:parentActivityName="com.solfege.BMP4.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.solfege.BMP4.MainActivity" />
+        </activity>
+    </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.solfege.solfege;
+package com.bmp4.solfege;
 
 import android.app.Activity;
 import android.content.Context;

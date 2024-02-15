@@ -1,4 +1,4 @@
-package com.solfege.solfege;
+package com.bmp4.solfege;
 
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;

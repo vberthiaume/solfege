@@ -1,4 +1,4 @@
-package com.solfege.solfege;
+package com.bmp4.solfege;
 
 import java.util.Random;
 
@@ -158,7 +158,7 @@ public class RightHand {
 
 //------------------------------- ENDOF FUNCTIONS CALLED BY JAVASCRIPT -------------------------------	
 	/**
-	 * Prends un degré en entrée et renvoie les notes de la main droite
+	 * Prends un degrï¿½ en entrï¿½e et renvoie les notes de la main droite
 	 * 
 	 * @param degre
 	 * @return String au format VEXTAB
@@ -288,8 +288,8 @@ public class RightHand {
 	}
 
 	/**
-	 * Décide si il faut mettre un silence ou pas selon une probabilité (plus le
-	 * paramètre d'entrée est grand, plus la chance est faible).
+	 * Dï¿½cide si il faut mettre un silence ou pas selon une probabilitï¿½ (plus le
+	 * paramï¿½tre d'entrï¿½e est grand, plus la chance est faible).
 	 * 
 	 * @param proba
 	 * @return -1 ou 1
@@ -306,7 +306,7 @@ public class RightHand {
 	}
 
 	/**
-	 * Prends un degré de gamme en entrée et renvoie l'équivalent midi.
+	 * Prends un degrï¿½ de gamme en entrï¿½e et renvoie l'ï¿½quivalent midi.
 	 * 
 	 * @param int degre
 	 * @return int midi
@@ -354,8 +354,8 @@ public class RightHand {
 	}
 
 	/**
-	 * Prends une table en entrée et va chercher une valeur dedant selon la
-	 * probabilité qu'elle tombe
+	 * Prends une table en entrï¿½e et va chercher une valeur dedant selon la
+	 * probabilitï¿½ qu'elle tombe
 	 * 
 	 * @param table
 	 * @return int
@@ -390,7 +390,7 @@ public class RightHand {
 	/**
 	 * Initialise les gammes des modes majeurs et mineurs
 	 * 
-	 * @return tableau à deux dimentions contenant les différentes gammes
+	 * @return tableau ï¿½ deux dimentions contenant les diffï¿½rentes gammes
 	 */
 	private int[][] init_gammes() {
 

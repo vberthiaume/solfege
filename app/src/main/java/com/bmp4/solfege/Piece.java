@@ -1,4 +1,4 @@
-package com.solfege.solfege;
+package com.bmp4.solfege;
 
 public class Piece {
 

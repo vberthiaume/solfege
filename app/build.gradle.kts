@@ -44,7 +44,7 @@ android {
 }
 
 dependencies {
-
+    implementation("io.github.libpd.android:pd-core:1.2.1-rc6")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     testImplementation("junit:junit:4.13.2")
