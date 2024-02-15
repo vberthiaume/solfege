@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+<!-- VexFlow Compiled Source -->
+<script src="./solfegeHtmlView_files/vexflow-min.js"></script>
+<style type="text/css"></style>
+
+<!-- Support Sources -->
+<script src="./solfegeHtmlView_files/jquery.js"></script>
+<script src="./solfegeHtmlView_files/raphael.js"></script>
+<script src="./solfegeHtmlView_files/solfegeJavaScript.js"></script>
+
+<style type="text/css">
+canvas {
+	background: #eed;
+	padding: 0px;
+	border: 0px solid #ddc;
+}
+
+body {
+  background: #eed;
+}
+
+div.egcode {
+	font-family: Courier;
+	font-size: 14px;
+}
+</style>
+
+<script>
+    // Take raw javascript code, and return moderately useful HTML
+    function prettify_code(code) {
+      var lines = code.split(/\r\n|\n|\r/);
+      var new_lines = [];
+      for (var j = 0; j < lines.length; ++j) {
+        code = lines[j];
+        code = code.replace(/\s/g, "&nbsp;");
+        code = code.replace(/>/g, "&gt;");
+        code = code.replace(/</g, "&lt;");
+        new_lines.push(code);
+      }
+
+      pretty_code = "<div class='egcode'>" + new_lines.join("<br/>") + "</div>";
+      return pretty_code;
+    }
+
+    
+    //Find all the javascript examples and copy their source code into the associated <code> blocks.
+    $(function() {
+      $("div.description").each(function(index, sel) {
+        codes = $(sel).find("code.example");
+        codes.each(function(i, s) {
+          var example = $(s).attr("example");
+          var code = $($(sel).find(
+            "div.example." + example + " script")[0]).html();
+          $(s).html(prettify_code(code));
+         })
+      })
+    })
+    
+	</script>
+</head>
+<body>
+	<div class="content" >
+		<canvas id="vexFlowCanvas" style="width: 100%;"></canvas>
+		<script>
+	        try{
+				var canvas = document.getElementById('vexFlowCanvas');
+				//var height = mainActivity.getWebViewHeight();
+				//var width = mainActivity.getWebViewWidth();
+				//canvas.width  = width;
+				//canvas.height = height; 
+				//canvas.style.width  = width + 'px';
+				//canvas.style.height = height + 'px';
+				
+				var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
+				var ctx = renderer.getContext();
+				var stave = new Vex.Flow.Stave(0, -canvas.height*.15, canvas.width*.99);
+				//var stave = new Vex.Flow.Stave(0, 0, 100);
+				stave.addClef("treble").setContext(ctx).draw();
+			
+				var stave2 = new Vex.Flow.Stave(0, canvas.height*.4, canvas.width*.99);
+				stave2.addClef("bass").setContext(ctx).draw();
+			} catch (e) {
+				console.log("error: " + e);
+				alert("error: " + e);  
+			}
+        </script>
+	</div>
+</body></html>

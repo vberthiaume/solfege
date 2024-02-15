@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!--_____________________________ FRENCH FILE_____________________________ -->
+    
+    <!--  MAIN GLOBAL STRINGS -->
+    <string name="title_activity_main">Activite principale</string>
+    
+    
+    <!--  SING ACTIVITY STRINGS -->
+    <string name="mainButtonGiveRoot">Donnes moi une tonale&#33;</string>
+    <string name="mainButtonGiveGuess">Donnes moi une note &#224; deviner&#33;</string>
+    <string name="mainButtonPlayAnswer">Jouer la r&#233;ponse&#33;</string>
+    <string name="mainButtonStartOver">On recommence&#33;</string>
+    
+    <!--  MAIN ACTIVITY STRINGS -->
+    <string name="singActivityButton">Sing&#33;</string>
+    <string name="hearActivityButton">Hear&#33;</string>
+    
+    <!--  STRINGS RELATED TO SETTINGS -->
+    <string name="action_settings">Parametres</string>
+    <string name="settingsButton">Paramètres</string>
+    <string name="title_activity_settings">Solfege - Paramètres]</string>
+    <string name="noteProbLabel">Probabilité de lecture des degrés</string>
+    <string name="rhythmProbLabel">Probabilité de lecture des rythmes</string>
+    <string name="firstRhythmProbLabel">Croche</string>
+    <string name="secondRhythmProbLabel">Noire</string>
+    <string name="thirdRhythmProbLabel">Blanche</string>
+    <string name="fourthRhythmProbLabel">Ronde</string>
+    
+    <!--  STRINGS RELATED TO ANDROID MEDIA RECORDER BUTTON -->
+    <string name="recordButton">Enregistrer son</string>
+    <string name="playSoundButton">Jouer un son</string>
+    
+</resources>

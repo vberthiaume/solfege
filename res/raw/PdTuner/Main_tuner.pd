@@ -1,0 +1,14 @@
+#N canvas 0 0 660 326 10;
+#X obj 80 119 tuner;
+#X text 402 126 <-- Switch audio on to tune up.;
+#X msg 93 30 40 45 50 55 59 64;
+#X text 224 29 <-- Standard tuning (E \, A \, D \, G \, B \, E);
+#X text 224 50 <-- Open-G tuning (D \, G \, D \, G \, B \, D);
+#X msg 98 52 38 43 50 55 59 62;
+#X text 246 70 And so on (in midi notation)...;
+#X text 403 284 Pierre Massat \, GuitarExtended \, 2012;
+#X obj 572 15 loadbang;
+#X msg 572 37 \; pd dsp 1 \;;
+#X connect 2 0 0 0;
+#X connect 5 0 0 0;
+#X connect 8 0 9 0;

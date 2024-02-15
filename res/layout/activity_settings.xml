@@ -1,0 +1,385 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SettingsActivity" >
+
+    <LinearLayout
+        android:id="@+id/settingsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+        
+        <LinearLayout
+            android:id="@+id/settingsTopHalf"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+			<LinearLayout
+			    android:id="@+id/settingsSeekTopGraphLayout"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:orientation="vertical" >
+
+			    <LinearLayout
+			        android:id="@+id/settingsSeekbarLayout"
+			        android:layout_width="match_parent"
+			        android:layout_height="0dp"
+			        android:layout_weight="1"
+			        android:orientation="horizontal"
+			        android:baselineAligned="false" >
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarFirstLayout"
+			            android:layout_width="0dp"
+			            android:layout_height="match_parent"
+			            android:layout_weight="1"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarFirstDeg"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewNoteProbFirstLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="1"
+			                android:textAlignment="center"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarSecondLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarSecondDeg"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewNoteProbSecondLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="2"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarThirdLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarThirdDeg"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewNoteProbThirdLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="3"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarFourthLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarFourthDeg"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewNoteProbFourthLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="4"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarFifthLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarFifthDeg"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewNoteProbFifthLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="5"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarSixthLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarSixthDeg"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewNoteProbSixthLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="6"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarSeventhLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarSeventhDeg"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewNoteProbSeventhLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="7"
+			                android:textAlignment="center"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+			    </LinearLayout>
+
+			    <TextView
+			        android:id="@+id/textViewNoteProbLabel"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="center"
+			        android:text="@string/noteProbLabel"
+			        android:textAlignment="center"
+			        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			</LinearLayout>
+            
+    	</LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/settingsBotHalf"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+			
+            <LinearLayout
+			    android:id="@+id/settingsSeekBottomGraphLayout"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:orientation="vertical" >
+
+			    <LinearLayout
+			        android:id="@+id/settingsSeekbarBottomLayout"
+			        android:layout_width="match_parent"
+			        android:layout_height="0dp"
+			        android:layout_weight="1"
+			        android:orientation="horizontal" >
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarFirstRhythmLayout"
+			            android:layout_width="0dp"
+			            android:layout_height="match_parent"
+			            android:layout_weight="1"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar 
+			                android:id="@+id/seekBarFirstRhythm"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewRhythmProbFirstLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="@string/firstRhythmProbLabel"
+			                android:textAlignment="center"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarSecondRhythmLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarSecondRhythm"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewRhythmProbSecondLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="@string/secondRhythmProbLabel"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarThirdRhythmLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarThirdRhythm"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewRhythmProbThirdLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="@string/thirdRhythmProbLabel"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:id="@+id/settingsSeekbarFourthRhythmLayout"
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="match_parent"
+			            android:orientation="vertical" >
+
+			            <com.solfege.solfege.VerticalSeekBar
+			                android:id="@+id/seekBarFourthRhythm"
+			                android:layout_width="wrap_content"
+			                android:layout_height="0dp"
+			                android:layout_gravity="center"
+			                android:layout_weight="1"
+			                android:max="10"
+			                android:progress="5" />
+
+			            <TextView
+			                android:id="@+id/textViewRhythmProbFourthLabel"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:text="@string/fourthRhythmProbLabel"
+			                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			        </LinearLayout>
+
+			    </LinearLayout>
+
+			    <TextView
+			        android:id="@+id/textViewRythmProbLabel"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="center"
+			        android:text="@string/rhythmProbLabel"
+			        android:textAlignment="center"
+			        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+			</LinearLayout>
+          
+            
+            
+
+    	</LinearLayout>
+        
+    </LinearLayout>
+
+</RelativeLayout>
