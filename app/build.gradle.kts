@@ -8,14 +8,14 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            keyAlias = "debug"
-            keyPassword = "LK90asdfkll_="
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
             storeFile = file("C:\\Users\\barth\\.android\\debug.keystore")
-            storePassword = "LK90asdfkll_="
+            storePassword = "android"
         }
 //        create("release") {
 //            keyAlias = "release"
-//            keyPassword = "LK90asdfkll_="
+//            keyPassword = "my keystore password"
 //            storeFile = file("/home/miles/keystore.jks")
 //            storePassword = "my keystore password"
 //        }
@@ -23,7 +23,7 @@ android {
 
     defaultConfig {
         applicationId = "com.bmp4.solfege"
-        minSdk = 31
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
